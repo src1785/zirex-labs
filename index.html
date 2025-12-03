@@ -31,11 +31,13 @@
             color: var(--text-main);
             line-height: 1.6;
             background: linear-gradient(180deg, var(--bg-dark) 0%, #000000 100%);
-            background-attachment: fixed; 
+            /* CRITICAL FIX: Changed 'fixed' to 'scroll' to prevent black screen rendering issues */
+            background-attachment: scroll; 
         }
+        
         a { text-decoration: none; color: inherit; transition: var(--transition); }
         ul { list-style: none; }
-        section { max-width: 1200px; margin: auto; padding: 5rem 5%; }
+        section { max-width: 1200px; margin: auto; padding: 5rem 5%; display: block !important; } 
         h2 { font-size: 2.5rem; margin-bottom: 3rem; color: white; text-align: center; font-weight: 700; }
         h2 span { color: var(--primary-orange); }
 
@@ -74,11 +76,11 @@
         .nav-links a:hover::after, .nav-links a[href="index.html"]::after { width: 100%; }
         .nav-links a[href="index.html"] { color: var(--primary-orange); }
 
-        /* === NEW: FORCED DISPLAY ON MAIN CONTENT === */
+        /* === MAIN CONTENT WRAPPER (Forced Display) === */
         main {
             display: block !important;
             overflow: visible !important;
-            min-height: 100vh; /* Ensure it takes up enough screen space */
+            min-height: 100vh; 
         }
         
         /* --- HERO SECTION --- */
