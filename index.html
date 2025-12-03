@@ -1,1 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Zirex | Precision Zirconia Dental Laboratory | India's Xclusive Lab</title>
+    <meta name="description" content="Zirex is a state-of-the-art dental laboratory in India, dedicated solely to fabricating monolithic and aesthetic layered Zirconia crowns, bridges, and custom implant solutions with guaranteed precision and fit.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* --- CSS VARIABLES --- */
+        :root {
+            --primary-orange: #ff5e00; 
+            --bg-dark: #121212;
+            --bg-card: #1e1e1e;
+            --bg-section: #181818; 
+            --bg-footer: #080808;
+            --text-main: #f4f4f4;
+            --text-muted: #a0a0a0;
+            --transition: all 0.3s ease-in-out;
+        }
+
+        /* --- GLOBAL RESET & GRADIENT BODY --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--text-main);
+            line-height: 1.6;
+            background: linear-gradient(180deg, var(--bg-dark) 0%, #000000 100%);
+            background-attachment: fixed; 
+        }
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
+        ul { list-style: none; }
+        section { max-width: 1200px; margin: auto; padding: 5rem 5%; display: block !important; } 
+        h2 { font-size: 2.5rem; margin-bottom: 3rem; color: white; text-align: center; font-weight: 700; }
+        h2 span { color: var(--primary-orange); }
+
+        /* --- UTILITIES --- */
+        .cta-button {
+            display: inline-block; padding: 1rem 2.5rem; background-color: var(--primary-orange); 
+            color: white; font-weight: bold; border-radius: 4px; letter-spacing: 0.5px;
+            transition: var(--transition);
+        }
+        .cta-button:hover { background-color: #e04e00; transform: translateY(-2px); }
+
+        /* ------------------------------------------------ */
+        /* --- 🚀 PRELOADER STYLES AND ANIMATION START --- */
+        /* ------------------------------------------------ */
+
+        /* The container that covers the entire screen */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-dark); /* Dark background matching the theme */
+            z-index: 9999; /* Ensure it's on top of everything */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s ease;
+        }
+
+        /* The spinning loader element (a simple border circle) */
+        .loader {
+            border: 5px solid #333; /* Light grey border */
+            border-top: 5px solid var(--primary-orange); /* Orange spinning part */
+            border-radius: 50%;
+            width: 70px;
+            height: 70px;
+            animation: spin 1s linear infinite; /* Apply the spin animation */
+        }
+
+        /* Define the spinning keyframes */
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* ---------------------------------------------- */
+        /* --- 🛑 PRELOADER STYLES AND ANIMATION END --- */
+        /* ---------------------------------------------- */
+        
+        /* --- TOP BAR & NAVIGATION (Stable) --- */
+        .top-bar { width: 100%; background-color: #000; color: var(--text-muted); padding: 0.5rem 5%; font-size: 0.85rem; border-bottom: 1px solid #1a1a1a; }
+        .top-bar-content { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: auto; }
+        .top-bar .contact-info i { color: var(--primary-orange); margin-right: 5px; }
+
+        .navbar {
+            display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 5%; 
+            background-color: transparent; 
+            position: sticky; top: 0; z-index: 1000; 
+            border-bottom: 1px solid var(--primary-orange); 
+        }
+        .nav-content { display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 1200px; margin: auto; }
+        
+        .logo {
+            background: linear-gradient(to right, #ffffff, #000000);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .logo h2 { font-size: 1.8rem; padding: 0; margin: 0; display: inline-block; } 
+
+        .nav-links { display: flex; gap: 2rem; }
+        .nav-links a { font-weight: 500; font-size: 1rem; position: relative; }
+        .nav-links a::after { content: ''; position: absolute; left: 0; bottom: -5px; width: 0; height: 2px; background-color: var(--primary-orange); transition: var(--transition); }
+        .nav-links a:hover::after, .nav-links a[href="index.html"]::after { width: 100%; }
+        .nav-links a[href="index.html"] { color: var(--primary-orange); }
+
+        /* === MAIN CONTENT WRAPPER (Forced Display) === */
+        main {
+            display: block !important;
+            overflow: visible !important;
+            min-height: 100vh; 
+        }
+        
+        /* --- HERO SECTION --- */
+        .hero-section {
+            padding: 8rem 5%;
+            text-align: center;
+            background-image: url('https://via.placeholder.com/1600x600/181818/FF5E00?text=ZIREX+LAB+HERO+IMAGE'); 
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.7);
+        }
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.6); 
+            z-index: -1;
+        }
+        .hero-section h1 {
+            font-size: 4rem; margin-bottom: 1rem; color: white; font-weight: 900;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+        .hero-section h1 span { color: var(--primary-orange); }
+        .hero-section p {
+            font-size: 1.4rem; color: #ddd; max-width: 800px; margin: 0 auto 3rem; font-weight: 300;
+        }
+
+        /* --- PRODUCT GRID SECTION (RESILIENT GRID) --- */
+        .slider-section {
+            background-color: var(--bg-section);
+            padding: 5rem 5%;
+        }
+        .product-grid {
+            display: grid !important; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            padding-bottom: 20px;
+        }
+        
+        .product-card {
+            background-color: var(--bg-card);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #333;
+            transition: var(--transition);
+        }
+        .product-card:hover { transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.4); }
+        .card-image { height: 250px; background-color: #333; }
+        .card-image img { width: 100%; height: 100%; object-fit: cover; }
+        .card-content { padding: 1.5rem; }
+        .card-content h3 { color: var(--primary-orange); margin-bottom: 0.5rem; font-size: 1.5rem; }
+        .card-content p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; }
+        
+        /* --- REVIEWS SECTION (RESILIENT GRID) --- */
+        .reviews-section {
+            background-color: var(--bg-dark);
+            border-top: 1px solid #333;
+        }
+        .review-grid {
+            display: grid !important; 
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        .review-card {
+            background-color: var(--bg-card);
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-orange);
+        }
+        
+        .review-card blockquote { 
+            font-style: italic; color: #ccc; margin-bottom: 15px; 
+            font-size: 1.1rem; line-height: 1.4;
+        }
+        .reviewer-info { font-weight: 700; color: white; }
+        .reviewer-info small { color: var(--primary-orange); font-weight: 400; display: block; margin-top: 3px; }
+
+        /* --- WHATSAPP & FOOTER (Stable) --- */
+        .whatsapp-container {
+            position: fixed; left: 0; bottom: 100px; z-index: 3000;
+            background-color: #25D366; padding: 12px 25px 12px 15px; border-radius: 0 30px 30px 0;
+            box-shadow:
 
