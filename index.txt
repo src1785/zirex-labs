@@ -310,7 +310,7 @@
             </div>
         </div>
         <div class="copyright">
-            <p>&copy; 2023 Zirex. Designed with precision.</p>
+            <p>&copy; 2023 Zirex. Designed with precision. </p>
         </div>
     </footer>
 
@@ -340,4 +340,5 @@
         }
     </script>
 </body>
+
 </html>
