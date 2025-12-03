@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Zirex | Precision Zirconia Dental Laboratory | India's Xclusive Lab</title>
+    <meta name="description" content="Zirex is a state-of-the-art dental laboratory in India, dedicated solely to fabricating monolithic and aesthetic layered Zirconia crowns, bridges, and custom implant solutions with guaranteed precision and fit.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* --- CSS VARIABLES --- */
+        :root {
+            --primary-orange: #ff5e00; 
+            --bg-dark: #121212;
+            --bg-card: #1e1e1e;
+            --bg-section: #181818; 
+            --bg-footer: #080808;
+            --text-main: #f4f4f4;
+            --text-muted: #a0a0a0;
+            --transition: all 0.3s ease-in-out;
+        }
+
+        /* --- GLOBAL RESET & GRADIENT BODY --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--text-main);
+            line-height: 1.6;
+            background: linear-gradient(180deg, var(--bg-dark) 0%, #000000 100%);
+            background-attachment: fixed; 
+        }
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
+        ul { list-style: none; }
+        section { max-width: 1200px; margin: auto; padding: 5rem 5%; }
+        h2 { font-size: 2.5rem; margin-bottom: 3rem; color: white; text-align: center; font-weight: 700; }
+        h2 span { color: var(--primary-orange); }
+
+        /* --- UTILITIES --- */
+        .cta-button {
+            display: inline-block; padding: 1rem 2.5rem; background-color: var(--primary-orange); 
+            color: white; font-weight: bold; border-radius: 4px; letter-spacing: 0.5px;
+            transition: var(--transition);
+        }
+        .cta-button:hover { background-color: #e04e00; transform: translateY(-2px); }
+
+        /* --- TOP BAR & NAVIGATION (Stable) --- */
+        .top-bar { width: 100%; background-color: #000; color: var(--text-muted); padding: 0.5rem 5%; font-size: 0.85rem; border-bottom: 1px solid #1a1a1a; }
+        .top-bar-content { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: auto; }
+        .top-bar .contact-info i { color: var(--primary-orange); margin-right: 5px; }
+
+        .navbar {
+            display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 5%; 
+            background-color: transparent; 
+            position: sticky; top: 0; z-index: 1000; 
+            border-bottom: 1px solid var(--primary-orange); 
+        }
+        .nav-content { display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 1200px; margin: auto; }
+        
+        .logo {
+            background: linear-gradient(to right, #ffffff, #000000);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .logo h2 { font-size: 1.8rem; padding: 0; margin: 0; display: inline-block; } 
+
+        .nav-links { display: flex; gap: 2rem; }
+        .nav-links a { font-weight: 500; font-size: 1rem; position: relative; }
+        .nav-links a::after { content: ''; position: absolute; left: 0; bottom: -5px; width: 0; height: 2px; background-color: var(--primary-orange); transition: var(--transition); }
+        .nav-links a:hover::after, .nav-links a[href="index.html"]::after { width: 100%; }
+        .nav-links a[href="index.html"] { color: var(--primary-orange); }
+
+        /* === NEW: FORCED DISPLAY ON MAIN CONTENT === */
+        main {
+            display: block !important;
+            overflow: visible !important;
+            min-height: 100vh; /* Ensure it takes up enough screen space */
+        }
+        
+        /* --- HERO SECTION --- */
+        .hero-section {
+            padding: 8rem 5%;
+            text-align: center;
+            background-image: url('https://via.placeholder.com/1600x600/181818/FF5E00?text=ZIREX+LAB+HERO+IMAGE'); 
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.7);
+        }
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.6); 
+            z-index: -1;
+        }
+        .hero-section h1 {
+            font-size: 4rem; margin-bottom: 1rem; color: white; font-weight: 900;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+        .hero-section h1 span { color: var(--primary-orange); }
+        .hero-section p {
+            font-size: 1.4rem; color: #ddd; max-width: 800px; margin: 0 auto 3rem; font-weight: 300;
+        }
+
+        /* --- PRODUCT GRID SECTION (RESILIENT GRID) --- */
+        .slider-section {
+            background-color: var(--bg-section);
+            padding: 5rem 5%;
+        }
+        .product-grid {
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            padding-bottom: 20px;
+        }
+        
+        .product-card {
+            background-color: var(--bg-card);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #333;
+            transition: var(--transition);
+        }
+        .product-card:hover { transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.4); }
+        .card-image { height: 250px; background-color: #333; }
+        .card-image img { width: 100%; height: 100%; object-fit: cover; }
+        .card-content { padding: 1.5rem; }
+        .card-content h3 { color: var(--primary-orange); margin-bottom: 0.5rem; font-size: 1.5rem; }
+        .card-content p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; }
+        
+        /* --- REVIEWS SECTION (RESILIENT GRID) --- */
+        .reviews-section {
+            background-color: var(--bg-dark);
+            border-top: 1px solid #333;
+        }
+        .review-grid {
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        .review-card {
+            background-color: var(--bg-card);
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-orange);
+        }
+        
+        .review-card blockquote { 
+            font-style: italic; color: #ccc; margin-bottom: 15px; 
+            font-size: 1.1rem; line-height: 1.4;
+        }
+        .reviewer-info { font-weight: 700; color: white; }
+        .reviewer-info small { color: var(--primary-orange); font-weight: 400; display: block; margin-top: 3px; }
+
+        /* --- WHATSAPP & FOOTER (Stable) --- */
+        .whatsapp-container {
+            position: fixed; left: 0; bottom: 100px; z-index: 3000;
+            background-color: #25D366; padding: 12px 25px 12px 15px; border-radius: 0 30px 30px 0;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.5); display: flex; align-items: center; gap: 12px; cursor: pointer;
+        }
+        .whatsapp-icon { font-size: 2.2rem; color: white; }
+        .whatsapp-text { color: white; font-weight: bold; font-size: 1rem; white-space: nowrap; }
+
+        footer { background-color: var(--bg-footer); padding: 4rem 5% 1rem 5%; border-top: 3px solid var(--primary-orange); color: #ccc; }
+        .footer-container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 2rem; margin-bottom: 3rem; max-width: 1200px; margin: auto auto 3rem; }
+        .footer-col { flex-basis: 200px; }
+        .footer-col h3 { color: white; margin-bottom: 1.5rem; font-size: 1.3rem; border-left: 3px solid var(--primary-orange); padding-left: 10px; }
+        .footer-col i { color: var(--primary-orange); width: 25px; }
+        .copyright { text-align: center; border-top: 1px solid #333; padding-top: 1.5rem; font-size: 0.8rem; color: #666; }
+
+        /* --- RESPONSIVE ADJUSTMENTS (Stable) --- */
+        @media (max-width: 768px) {
+            .navbar .nav-content { flex-direction: column; gap: 15px; text-align: center; }
+            .nav-links { justify-content: center; }
+            .hero-section h1 { font-size: 3rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <div class="top-bar-content">
+            <div class="contact-info">
+                <span><i class="fas fa-phone"></i> +91-9841 75004</span>
+                <span><i class="fas fa-envelope"></i> info@zirex.com</span>
+            </div>
+            <div class="announcement">
+                GRAND OPENING ON 1/1/2026!
+            </div>
+        </div>
+    </div>
+    
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">
+                <h2>ZIREX LABS</h2>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li> 
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="about.html">About Us</a></li> 
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <main>
+    
+        <section class="hero-section">
+            <h1>Zirex Laboratory: <span>The Future of Zirconia</span></h1>
+            <p>India's Xclusive dental lab dedicated solely to high-precision, aesthetic CAD/CAM Zirconia restorations. Guaranteed fit, guaranteed strength.</p>
+            <a href="products.html" class="cta-button">View Our Zirconia Products</a>
+        </section>
+
+        <section class="slider-section">
+            <h2>Explore Our <span>Core Products</span></h2>
+            <div class="product-grid">
+                
+                <div class="product-card">
+                    <div class="card-image"><img src="https://via.placeholder.com/350x250/3c3c3c/FF5E00?text=Signature+Aesthetic" alt="Signature Crown"></div>
+                    <div class="card-content">
+                        <h3>Signature Aesthetic Crowns</h3>
+                        <p>Highly aesthetic layered Zirconia for maximum vitality and life-like results in the anterior region.</p>
+                        <a href="products.html" class="cta-button" style="padding: 0.6rem 1.2rem;">Details</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="card-image"><img src="https://via.placeholder.com/350x250/3c3c3c/FF5E00?text=Ultra+Max+Monolithic" alt="Monolithic Crown"></div>
+                    <div class="card-content">
+                        <h3>Ultra Max Monolithic</h3>
+                        <p>Extreme strength (1400 MPa+) monolithic Zirconia for unbreakable and precise posterior restorations.</p>
+                        <a href="products.html" class="cta-button" style="padding: 0.6rem 1.2rem;">Details</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="card-image"><img src="https://via.placeholder.com/350x250/3c3c3c/FF5E00?text=Custom+Abutments" alt="Custom Abutments"></div>
+                    <div class="card-content">
+                        <h3>Custom Zirconia Abutments</h3>
+                        <p>Precisely milled abutments for optimal soft tissue contouring and seamless implant integration.</p>
+                        <a href="products.html" class="cta-button" style="padding: 0.6rem 1.2rem;">Details</a>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="card-image"><img src="https://via.placeholder.com/350x250/3c3c3c/FF5E00?text=Fixed+Hybrid+Arch" alt="Fixed Hybrid Arch"></div>
+                    <div class="card-content">
+                        <h3>Fixed Hybrid Arch</h3>
+                        <p>Full-arch fixed prosthetic solutions built using robust, digitally milled Zirconia structures.</p>
+                        <a href="products.html" class="cta-button" style="padding: 0.6rem 1.2rem;">Details</a>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="reviews-section">
+            <h2>What Our <span>Doctors Say</span></h2>
+            <div class="review-grid">
+                <div class="review-card">
+                    <blockquote>"The marginal fit of Zirex crowns is the best I've seen in my 20 years of practice. It saves me considerable time during cementation."</blockquote>
+                    <p class="reviewer-info">Dr. K. Sharma <small>Chennai, India</small></p>
+                </div>
+                <div class="review-card">
+                    <blockquote>"Their aesthetic layering work on anterior Zirconia is phenomenal. The shades are spot-on, and the translucency is completely natural."</blockquote>
+                    <p class="reviewer-info">Dr. V. Prasad <small>Bangalore, India</small></p>
+                </div>
+                <div class="review-card">
+                    <blockquote>"Reliable strength and predictable results every single time. Zirex is now our exclusive lab partner for all Zirconia cases."</blockquote>
+                    <p class="reviewer-info">Dr. R. Singh <small>Mumbai, India</small></p>
+                </div>
+            </div>
+        </section>
+    
+    </main>
+    <a href="https://wa.me/91984175004?text=Hello%20Zirex%20Laboratory%2C%20I%20am%20a%20clinician%20interested%20in%20your%20Zirconia%20services." target="_blank" class="whatsapp-container">
+        <i class="fab fa-whatsapp whatsapp-icon"></i>
+        <span class="whatsapp-text">Chat with us</span>
+    </a>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>Zirex Laboratory</h3>
+                <p>An Xclusive Zirconia Dental Laboratory dedicated to high-quality, precision dental solutions.</p>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Contact Info</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> Manapparai, Tamil Nadu, India</li>
+                    <li><i class="fas fa-phone"></i> +91 9841 75004</li>
+                    <li><i class="fas fa-envelope"></i> contact@zirexlabs.com</li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Follow Us</h3>
+                <div class="footer-socials" style="display: flex; gap: 15px; margin-top: 10px; font-size: 1.5rem;">
+                    <a href="#" style="color: #666;"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" style="color: #666;"><i class="fab fa-twitter"></i></a>
+                    <a href="#" style="color: #666;"><i class="fab fa-instagram"></i></a>
+                    <a href="#" style="color: #666;"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2026 Zirex Labs. Designed with precision.</p>
+        </div>
+    </footer>
+    
+</body>
+</html>

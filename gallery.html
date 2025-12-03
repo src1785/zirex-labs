@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zirex | Precision Zirconia Gallery & Case Studies</title>
+    <meta name="description" content="View our showcase of high-quality Zirconia crowns, bridges, and implant restorations. Detailed case studies on fit, strength, and aesthetics.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* --- CSS VARIABLES --- */
+        :root {
+            --primary-orange: #ff5e00; 
+            --bg-dark: #121212;
+            --bg-card: #1e1e1e;
+            --bg-feature: #181818;
+            --bg-footer: #080808;
+            --text-main: #f4f4f4;
+            --text-muted: #a0a0a0;
+            --transition: all 0.3s ease;
+        }
+
+        /* --- GLOBAL RESET & TYPOGRAPHY --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
+        ul { list-style: none; }
+        
+        /* --- TOP BAR & NAVIGATION (Standard) --- */
+        .top-bar { width: 100%; background-color: #000; color: var(--text-muted); padding: 0.5rem 5%; font-size: 0.85rem; border-bottom: 1px solid #1a1a1a; }
+        .top-bar-content { display: flex; justify-content: space-between; align-items: center; }
+        .top-bar .contact-info i { color: var(--primary-orange); margin-right: 5px; }
+
+        .navbar {
+            display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 5%; 
+            background-color: rgba(18, 18, 18, 0.95); position: sticky; top: 0; z-index: 1000; 
+            border-bottom: 1px solid #333; box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+        /* Using h2 as temporary logo if zirex.jpg is missing */
+        .logo h2 { color: var(--primary-orange); font-size: 1.8rem; } 
+        .logo img { height: 75px; width: auto; }
+        .nav-links { display: flex; gap: 2rem; }
+        .nav-links a { font-weight: 500; font-size: 1rem; }
+        .nav-links a:hover { color: var(--primary-orange); }
+        .nav-links a[href="gallery.html"] { 
+            color: var(--primary-orange); 
+            border-bottom: 2px solid var(--primary-orange);
+            padding-bottom: 5px;
+        }
+
+        /* --- PAGE HEADER / BREADCRUMB --- */
+        .page-header {
+            background-color: var(--bg-card);
+            padding: 3rem 10%;
+            text-align: center;
+            border-bottom: 3px solid var(--primary-orange);
+        }
+        .page-header h1 { font-size: 3rem; color: white; margin-bottom: 10px; }
+        .page-header p { color: var(--text-muted); font-size: 1.1rem; }
+
+        /* --- GALLERY GRID SECTION --- */
+        .gallery-main {
+            padding: 4rem 10%;
+            position: relative; 
+            min-height: 80vh; /* Ensure space for content */
+        }
+        .gallery-filters {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .gallery-filters button {
+            background: none; border: 1px solid var(--primary-orange); color: var(--primary-orange);
+            padding: 0.5rem 1.5rem; margin: 0 5px 10px 5px; cursor: pointer; transition: var(--transition);
+            font-weight: bold;
+        }
+        .gallery-filters button:hover, .gallery-filters button.active { background-color: var(--primary-orange); color: white; }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            height: 350px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .gallery-item:hover {
+            transform: scale(1.03); 
+            box-shadow: 0 6px 15px rgba(255, 94, 0, 0.4); 
+        }
+        .gallery-item img {
+            width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;
+        }
+        .gallery-item:hover img { transform: scale(1.05); }
+        .item-caption {
+            position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.75);
+            padding: 1rem; color: white; font-size: 1.1rem; font-weight: bold; display: flex;
+            justify-content: space-between; align-items: center;
+        }
+        .item-caption span { font-size: 0.9rem; color: var(--primary-orange); }
+
+        /* --- DETAILED CASE STUDY OVERLAY --- */
+        .case-detail-overlay {
+            position: fixed; 
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95); 
+            z-index: 2000; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0; 
+            visibility: hidden; 
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+            overflow-y: auto; 
+            padding: 20px 0; 
+        }
+        .case-detail-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .case-detail-content {
+            background-color: var(--bg-dark);
+            width: 90%;
+            max-width: 1200px;
+            border-radius: 8px;
+            box-shadow: 0 0 30px rgba(255, 94, 0, 0.5); 
+            transform: translateY(30px); /* Starts slightly below */
+            opacity: 0; 
+            transition: transform 0.4s ease, opacity 0.4s ease;
+            position: relative; 
+        }
+        .case-detail-overlay.active .case-detail-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2.5rem;
+            cursor: pointer;
+            z-index: 2010; 
+            transition: color 0.3s ease;
+        }
+        .close-button:hover {
+            color: var(--primary-orange);
+        }
+
+        /* --- STYLES FOR THE IN-BUILT CASE-STUDY CONTENT --- */
+        .case-study-inner {
+            padding: 2rem;
+            max-height: 90vh; /* Control max height for inner content */
+            overflow-y: auto; 
+            display: grid;
+            grid-template-columns: 2fr 1fr; 
+            gap: 40px;
+            color: var(--text-main);
+        }
+        .case-study-inner h1 { font-size: 2.5rem; color: white; margin-bottom: 5px; }
+        .case-study-inner .tagline { color: var(--primary-orange); font-size: 1.1rem; display: block; margin-bottom: 2rem; }
+        .case-study-inner h2 { font-size: 1.8rem; color: white; margin-bottom: 1rem; border-bottom: 2px solid #333; padding-bottom: 10px; }
+        .case-study-inner h3 { color: var(--primary-orange); margin-top: 0; margin-bottom: 10px; font-size: 1.4rem; }
+        .case-study-inner p { color: var(--text-muted); margin-bottom: 15px; }
+
+        .tech-specs-sidebar {
+            background-color: var(--bg-feature);
+            padding: 1.5rem;
+            border-radius: 8px;
+            height: fit-content;
+        }
+        .tech-specs-sidebar ul { list-style: none; padding: 0; }
+        .tech-specs-sidebar li { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px dashed #333; font-size: 0.95rem; }
+        .tech-specs-sidebar li strong { color: white; }
+        .tech-specs-sidebar li span { color: var(--text-muted); }
+
+        .visual-block { margin-bottom: 2rem; background-color: var(--bg-feature); padding: 15px; border-radius: 8px; }
+        .visual-block img { width: 100%; height: auto; border-radius: 4px; margin-bottom: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
+        .case-visuals { grid-column: 1 / 2; } /* Visuals on the left */
+        .tech-specs-sidebar { grid-column: 2 / 3; } /* Sidebar on the right */
+
+        /* --- WHATSAPP & FOOTER (Standard) --- */
+        .whatsapp-container {
+            position: fixed; left: 0; bottom: 100px; z-index: 3000;
+            transform: translateX(-70%); transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.27), opacity 0.3s ease;
+            background-color: #25D366; padding: 12px 25px 12px 15px; border-radius: 0 30px 30px 0;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.5); display: flex; align-items: center; gap: 12px; cursor: pointer; opacity: 0.6; 
+        }
+        .whatsapp-container:hover { transform: translateX(0); opacity: 1; }
+        .whatsapp-icon { font-size: 2.2rem; color: white; }
+        .whatsapp-text { color: white; font-weight: bold; font-size: 1rem; white-space: nowrap; }
+
+        footer { background-color: var(--bg-footer); padding: 4rem 10% 1rem 10%; border-top: 3px solid var(--primary-orange); color: #ccc; }
+        .footer-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-bottom: 3rem; }
+        .footer-col h3 { color: white; margin-bottom: 1.5rem; font-size: 1.3rem; border-left: 3px solid var(--primary-orange); padding-left: 10px; }
+        .footer-col p, .footer-col li { margin-bottom: 10px; font-size: 0.95rem; }
+        .footer-col i { color: var(--primary-orange); width: 25px; }
+        .footer-socials a { display: inline-block; margin-right: 15px; font-size: 1.2rem; color: white; }
+        .footer-socials a:hover { color: var(--primary-orange); }
+        .copyright { text-align: center; border-top: 1px solid #333; padding-top: 1.5rem; font-size: 0.8rem; color: #666; }
+
+        /* --- RESPONSIVE ADJUSTMENTS --- */
+        @media (max-width: 992px) {
+            .case-study-inner {
+                grid-template-columns: 1fr; 
+                padding: 1.5rem;
+            }
+            .case-visuals, .tech-specs-sidebar { grid-column: 1 / -1; }
+            .case-detail-content { width: 95%; padding: 10px; }
+            .case-study-inner h1 { font-size: 2rem; }
+            .close-button { top: 10px; right: 10px; font-size: 2rem; }
+        }
+        @media (max-width: 768px) {
+            .navbar { flex-direction: column; gap: 15px; text-align: center; }
+            .logo h2 { height: 40px; } 
+            .page-header h1 { font-size: 2rem; }
+            .gallery-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <div class="top-bar-content">
+            <div class="contact-info">
+                <span><i class="fas fa-phone"></i> +91-9841 75004</span>
+                <span><i class="fas fa-envelope"></i> info@zirex.com</span>
+            </div>
+            <div class="announcement">
+                GRAND OPENING ON 1/1/2026!
+            </div>
+        </div>
+    </div>
+    <nav class="navbar">
+        <div class="logo">
+            <h2 style="color: var(--primary-orange);">ZIREX LABS</h2>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li> 
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="about.html">About Us</a></li> 
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header class="page-header">
+        <h1>Our Precision Work <span>Gallery</span></h1>
+        <p>A showcase of excellence in full-contour Zirconia, layered restorations, and implant prosthetics. Click any case to view details.</p>
+    </header>
+
+    <main class="gallery-main">
+        <div class="gallery-filters">
+            <button class="filter-button active" data-category="all">All Cases</button>
+            <button class="filter-button" data-category="crowns-bridges">Crowns & Bridges</button>
+            <button class="filter-button" data-category="implants">Implant Solutions</button>
+            <button class="filter-button" data-category="before-after">Aesthetic Cases</button>
+        </div>
+        
+        <div class="gallery-grid">
+            </div>
+    </main>
+
+    <div class="case-detail-overlay" id="caseDetailOverlay">
+        <div class="case-detail-content">
+            <button class="close-button" id="closeCaseDetail">&times;</button>
+            <div class="case-study-inner" id="caseStudyInnerContent">
+                </div>
+        </div>
+    </div>
+    
+    <a href="https://wa.me/91984175004?text=Hello%20Zirex%20Laboratory%2C%20I%20am%20a%20clinician%20interested%20in%20your%20Zirconia%20services.%20Please%20share%20your%20case%20submission%20process%2C%20turnaround%20times%2C%20and%20a%20link%20to%20your%20price%20sheet.%20Thank%20you." target="_blank" class="whatsapp-container">
+        <i class="fab fa-whatsapp whatsapp-icon"></i>
+        <span class="whatsapp-text">Chat with us</span>
+    </a>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>Zirex Laboratory</h3>
+                <p>An Xclusive Zirconia Dental Laboratory dedicated to high-quality, precision dental solutions.</p>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Contact Info</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> Manapparai, Tamil Nadu, India</li>
+                    <li><i class="fas fa-phone"></i> +91 9841 75004</li>
+                    <li><i class="fas fa-envelope"></i> contact@zirexlabs.com</li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Follow Us</h3>
+                <div class="footer-socials">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2026 Zirex Labs. Designed with precision.</p>
+        </div>
+    </footer>
+
+    <script>
+        const galleryItems = [
+            // --- CROWNS & BRIDGES PRODUCT OVERVIEW ITEM ---
+            {
+                id: 'product-overview-cb',
+                category: 'crowns-bridges',
+                thumbnail: 'https://via.placeholder.com/600x350/FF5E00/FFFFFF?text=Product+Overview', 
+                title: 'Zirconia Crowns & Bridges Line',
+                tag: 'VIEW PRODUCT DETAILS',
+                detailedContent: `
+                    <div class="case-visuals">
+                        <h1>Zirex Crowns & Bridges: <span>Unmatched Strength and Aesthetics</span></h1>
+                        <span class="tagline">The ultimate solution for high-demand restorative dentistry.</span>
+                        <p>Zirex specializes in manufacturing monolithic and layered Zirconia restorations that guarantee perfect marginal fit, exceptional strength (1200+ MPa), and aesthetic integration.</p>
+
+                        <h2 style="margin-top: 30px;">Our Product Tiers</h2>
+                        
+                        <div class="visual-block">
+                            <h3>1. Zirex Ultra-Max (Monolithic)</h3>
+                            <img src="https://via.placeholder.com/800x450/121212/CCCCCC?text=Ultra-Max+Posterior" alt="Monolithic Zirconia">
+                            <p style="color: var(--text-muted); font-size: 0.9rem;">**Indication:** Posterior (high load areas). **Benefits:** Unbreakable strength, minimal tooth reduction required, and high density for low plaque accumulation.</p>
+                        </div>
+                        
+                        <div class="visual-block">
+                            <h3>2. Zirex Signature (Layered Aesthetic)</h3>
+                            <img src="https://via.placeholder.com/800x450/121212/CCCCCC?text=Signature+Anterior" alt="Layered Zirconia">
+                            <p style="color: var(--text-muted); font-size: 0.9rem;">**Indication:** Anterior (high aesthetic areas). **Benefits:** Hand-layered porcelain for superior depth, translucency, and vitality, while maintaining Zirconia strength.</p>
+                        </div>
+
+                        <div class="visual-block">
+                            <h2>The Zirex Digital Advantage</h2>
+                            <p>Every restoration is 100% proof-tested against mechanical failure. Our CAD/CAM process ensures consistent quality, predictable fit, and a rapid turnaround time of just 5 days from scan to final product.</p>
+                        </div>
+                    </div>
+                    
+                    <aside class="tech-specs-sidebar">
+                        <h2>Key Technical Data</h2>
+                        <ul class="spec-list">
+                            <li><strong>Minimum Strength:</strong> <span>1000 - 1200 MPa</span></li>
+                            <li><strong>Cementation:</strong> <span>Resin-modified Glass Ionomer or Resin Cement</span></li>
+                            <li><strong>Digital Acceptance:</strong> <span>All major intraoral scanners (iTero, TRIOS, Medit)</span></li>
+                            <li><strong>Turnaround Time:</strong> <span>5 Working Days</span></li>
+                            <li><strong>Warrantied:</strong> <span>Yes (5-7 Years, depending on material)</span></li>
+                        </ul>
+                        
+                        <h2 style="margin-top: 30px;">Ready to Partner?</h2>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;">Download our comprehensive guide or contact us to discuss bulk partnership rates.</p>
+                        
+                        <a href="contact.html" style="margin-top: 20px; display: block; background-color: var(--primary-orange); color: white; padding: 10px; text-align: center; border-radius: 4px;">Contact Us to Get Started</a>
+                    </aside>
+                `
+            },
+            // --- CASE STUDY 1: CROWNS & BRIDGES ---
+            {
+                id: 'case1',
+                category: 'crowns-bridges',
+                thumbnail: 'https://via.placeholder.com/600x350/FF8844/FFFFFF?text=CASE+1+Bridge',
+                title: 'Full Arch Bridge Case',
+                tag: 'Ultra-Max Zirconia',
+                detailedContent: `
+                    <div class="case-visuals">
+                        <h1>Full-Contour Posterior Zirconia Bridge (3-Unit)</h1>
+                        <span class="tagline">Restoring strength and function with Zirex Ultra-Max Zirconia.</span>
+                        <p>A detailed look at the digital workflow, material choice, and final fit of a critical posterior restoration case, ensuring 1200+ MPa strength.</p>
+                        
+                        <div class="visual-block">
+                            <h2>Preparation Scan Visualization</h2>
+                            <img src="https://via.placeholder.com/800x450/444444/FFFFFF?text=Preparation+Scan+View" alt="Preparation Scan">
+                            <p style="color: var(--text-muted); font-size: 0.9rem;">High-definition scan showing the abutment preparation details for marginal integrity.</p>
+                        </div>
+                        <div class="visual-block">
+                            <h2>Final Restoration in Occlusion</h2>
+                            <img src="https://via.placeholder.com/800x450/444444/FFFFFF?text=Final+Restoration+Occlusion" alt="Final Bridge">
+                            <p style="color: var(--text-muted); font-size: 0.9rem;">The ready-to-deliver product, showcasing flawless anatomy and polish.</p>
+                        </div>
+                    </div>
+                    <aside class="tech-specs-sidebar">
+                        <h2>Case Specifications</h2>
+                        <ul class="spec-list">
+                            <li><strong>Product Used:</strong> <span>Zirex Ultra-Max</span></li>
+                            <li><strong>Material:</strong> <span>Y-TZP Zirconia</span></li>
+                            <li><strong>Clinical Indication:</strong> <span>Posterior Bridge (Units 4-6)</span></li>
+                            <li><strong>Strength Rating:</strong> <span>1200+ MPa</span></li>
+                            <li><strong>Client Scan System:</strong> <span>iTero Element 2</span></li>
+                            <li><strong>Turnaround Time:</strong> <span>5 Working Days</span></li>
+                            <li><strong>Shade:</strong> <span>A3 Vita Classic</span></li>
+                        </ul>
+                        <h2 style="margin-top: 30px;">Digital Precision</h2>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;">The case was designed using 3Shape software, optimizing contact points and occlusion entirely digitally to ensure zero adjustments at the chairside.</p>
+                        <a href="contact.html" style="margin-top: 20px; display: block; background-color: var(--primary-orange); color: white; padding: 10px; text-align: center; border-radius: 4px;">Start Your Digital Case Now</a>
+                    </aside>
+                `
+            },
+            // --- CASE STUDY 2: IMPLANTS ---
+            {
+                id: 'case2',
+                category: 'implants',
+                thumbnail: 'https://via.placeholder.com/600x350/FF8844/FFFFFF?text=CASE+2+Implant',
+                title: 'Screw-Retained Crown',
+                tag: 'Implant Solution',
+                detailedContent: `
+                    <div class="case-visuals">
+                        <h1>Custom Zirconia Abutment & Screw-Retained Crown</h1>
+                        <span class="tagline">Optimal soft tissue management and superior aesthetics for implant-supported crowns.</span>
+                        <p>This case demonstrates precise implant planning and custom abutment design for an aesthetic anterior implant restoration.</p>
+
+                        <div class="visual-block">
+                            <h2>Abutment Design & Fit</h2>
+                            <img src="https://via.placeholder.com/800x450/444444/FFFFFF?text=Abutment+Design" alt="Abutment Fit">
+                            <p style="color: var(--text-muted); font-size: 0.9rem;">Close-up of the custom abutment, showing ideal contours for soft tissue support.</p>
+                        </div>
+                        <div class="visual-block">
+                            <h2>Final Crown in Place</h2>
+                            <img src="https://via.placeholder.com/800x450/444444/FFFFFF?text=Final+Crown+Aesthetics" alt="Final Crown">
+                            <p style="color: var(--text-muted); font-size: 0.9rem;">Patient photo demonstrating the aesthetic outcome and soft tissue blend.</p>
+                        </div>
+                    </div>
+                    <aside class="tech-specs-sidebar">
+                        <h2>Case Specifications</h2>
+                        <ul class="spec-list">
+                            <li><strong>Product Used:</strong> <span>Zirex Custom Abutment</span></li>
+                            <li><strong>Material:</strong> <span>Zirconia + Ti-Base</span></li>
+                            <li><strong>Clinical Indication:</strong> <span>Single Anterior Implant</span></li>
+                            <li><strong>Abutment Design:</strong> <span>Custom Emergence Profile</span></li>
+                            <li><strong>Client Scan System:</strong> <span>Medit i500</span></li>
+                            <li><strong>Turnaround Time:</strong> <span>7 Working Days</span></li>
+                            <li><strong>Shade:</strong> <span>BL1 Vita Master</span></li>
+                        </ul>
+                        <h2 style="margin-top: 30px;">Why Custom Zirconia?</h2>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;">Custom Zirconia abutments provide biological advantages by promoting healthy soft tissue integration and allowing for precise crown margins, crucial for anterior aesthetics.</p>
+                    </aside>
+                `
+            },
+            // --- CASE STUDY 3: BEFORE & AFTER ---
+            {
+                id: 'case3',
+                category: 'before-after',
+                thumbnail: 'https://via.placeholder.com/600x350/FF8844/FFFFFF?text=CASE+3+Aesthetics',
+                title: 'Anterior Makeover',
+                tag: 'Aesthetic Zirconia',
+                detailedContent: `
+                    <div class="case-visuals">
+                        <h1>Anterior Smile Makeover with Layered Zirconia</h1>
+                        <span class="tagline">Transforming smiles with highly aesthetic, durable Zirconia veneers and crowns.</span>
+                        <p>This case highlights the dramatic aesthetic improvements achievable with Zirex's layered Zirconia solutions for anterior teeth, balancing translucency and strength.</p>
+                        
+                        <div class="visual-block">
+                            <h2>Before Treatment</h2>
+                            <img src="https://via.placeholder.com/800x450/444444/FFFFFF?text=Before+Treatment+View" alt="Before Treatment">
+                            <p style="color: var(--text-muted); font-size: 0.9rem;">Initial presentation with significant discoloration and old, compromised restorations.</p>
+                        </div>
+                        <div class="visual-block">
+                            <h2>After Treatment</h2>
+                            <img src="https://via.placeholder.com/800x450/444444/FFFFFF?text=After+Treatment+View" alt="After Treatment">
+                            <p style="color: var(--text-muted); font-size: 0.9rem;">The transformed smile with Zirex Layered Zirconia, showcasing shade A1 and natural texture.</p>
+                        </div>
+                    </div>
+                    <aside class="tech-specs-sidebar">
+                        <h2>Case Specifications</h2>
+                        <ul class="spec-list">
+                            <li><strong>Product Used:</strong> <span>Zirex Signature Anterior</span></li>
+                            <li><strong>Material:</strong> <span>Layered Zirconia</span></li>
+                            <li><strong>Clinical Indication:</strong> <span>6 Anterior Units (Veneers/Crowns)</span></li>
+                            <li><strong>Primary Concern:</strong> <span>Discoloration & Malalignment</span></li>
+                            <li><strong>Client Scan System:</strong> <span>3Shape TRIOS</span></li>
+                            <li><strong>Turnaround Time:</strong> <span>8 Working Days</span></li>
+                            <li><strong>Shade:</strong> <span>A1 Vita Classic</span></li>
+                        </ul>
+                        <h2 style="margin-top: 30px;">Aesthetic Perfection</h2>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;">Our master ceramists meticulously hand-layer porcelain over strong Zirconia substructures to achieve optimal translucency, shade depth, and natural contours for unparalleled aesthetics.</p>
+                    </aside>
+                `
+            }
+        ];
+
+        const galleryGrid = document.querySelector('.gallery-grid');
+        const filterButtons = document.querySelectorAll('.filter-button');
+        const caseDetailOverlay = document.getElementById('caseDetailOverlay');
+        const caseStudyInnerContent = document.getElementById('caseStudyInnerContent');
+        const closeCaseDetailButton = document.getElementById('closeCaseDetail');
+        const body = document.body;
+
+        // --- RENDER FUNCTION ---
+        const renderGallery = (filter = 'all') => {
+            galleryGrid.innerHTML = '';
+            
+            const filteredItems = galleryItems.filter(item => {
+                if (filter === 'all') return true;
+                if (filter === 'crowns-bridges' && item.id === 'product-overview-cb') return true;
+                return item.category === filter;
+            });
+
+            if (filteredItems.length === 0) {
+                 galleryGrid.innerHTML = `<p style="grid-column: 1 / -1; text-align: center; color: var(--text-muted);">No cases found for this filter.</p>`;
+            }
+
+            filteredItems.forEach(item => {
+                const galleryItem = document.createElement('div');
+                galleryItem.className = 'gallery-item';
+                galleryItem.setAttribute('data-id', item.id);
+                galleryItem.setAttribute('data-category', item.category);
+
+                galleryItem.innerHTML = `
+                    <img src="${item.thumbnail}" alt="${item.title}">
+                    <div class="item-caption">
+                        ${item.title}
+                        <span>${item.tag}</span>
+                    </div>
+                `;
+
+                galleryItem.addEventListener('click', () => showCaseDetail(item.id));
+                galleryGrid.appendChild(galleryItem);
+            });
+        };
+
+        // --- DETAIL OVERLAY FUNCTIONS ---
+        const showCaseDetail = (id) => {
+            const item = galleryItems.find(i => i.id === id);
+            if (!item) return;
+
+            caseStudyInnerContent.innerHTML = item.detailedContent;
+            
+            caseDetailOverlay.classList.add('active');
+            body.style.overflow = 'hidden'; // Disable body scroll
+
+            caseStudyInnerContent.scrollTop = 0;
+        };
+
+        const hideCaseDetail = () => {
+            caseDetailOverlay.classList.remove('active');
+            body.style.overflow = 'auto'; // Re-enable body scroll
+        };
+
+        // --- EVENT LISTENERS ---
+        // 1. Filter buttons
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const filter = button.getAttribute('data-category');
+                
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                
+                renderGallery(filter);
+            });
+        });
+
+        // 2. Close button
+        closeCaseDetailButton.addEventListener('click', hideCaseDetail);
+
+        // 3. Close on clicking outside the content
+        caseDetailOverlay.addEventListener('click', (e) => {
+            if (e.target === caseDetailOverlay) {
+                hideCaseDetail();
+            }
+        });
+
+        // 4. Initial load
+        document.addEventListener('DOMContentLoaded', () => {
+            renderGallery('all');
+        });
+    </script>
+</body>
+</html>

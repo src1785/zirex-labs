@@ -1,0 +1,84 @@
+[... code above contact info container remains the same ...]
+
+        <div class="contact-info-container">
+            <h2>Office Information</h2>
+            
+            <div class="info-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <div>
+                    <p>Laboratory Address</p>
+                    <span>Manapparai, Tamil Nadu, India</span>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <i class="fas fa-phone"></i>
+                <div>
+                    <p>Call Us</p>
+                    <span>Primary: +91 9841 75004<br>Fax: +91 (555) 987-6543 (Placeholder)</span>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <i class="fas fa-envelope"></i>
+                <div>
+                    <p>Email Us</p>
+                    <span>For Inquiries: contact@zirexlabs.com<br>For Orders: orders@zirexlabs.com (Placeholder)</span>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <i class="fas fa-clock"></i>
+                <div>
+                    <p>Office Hours</p>
+                    <span>Mon - Fri: 9:00 AM - 5:00 PM (IST)<br>Closed on weekends and public holidays.</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+[... code between map and footer remains the same ...]
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>Zirex Laboratory</h3>
+                <p>An Xclusive Zirconia Dental Laboratory dedicated to high-quality, precision dental solutions.</p>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Contact Info</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> Manapparai, Tamil Nadu, India</li>
+                    <li><i class="fas fa-phone"></i> +91 9841 75004</li>
+                    <li><i class="fas fa-envelope"></i> contact@zirexlabs.com</li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Follow Us</h3>
+                <div class="footer-socials">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2026 Zirex Labs. Designed with precision.</p>
+        </div>
+    </footer>
+</body>
+</html>

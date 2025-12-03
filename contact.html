@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zirex | Contact Us</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* --- CSS VARIABLES (Shared) --- */
+        :root {
+            --primary-orange: #ff5e00; 
+            --secondary-orange: #e04d00;
+            --bg-dark: #121212;
+            --bg-card: #1e1e1e;
+            --bg-footer: #080808;
+            --text-main: #f4f4f4;
+            --text-muted: #a0a0a0;
+            --transition: all 0.3s ease;
+        }
+
+        /* --- GLOBAL & REUSED STYLES --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; }
+
+        /* --- NAVIGATION --- */
+        .top-bar {
+            width: 100%; background-color: #000; color: var(--text-muted);
+            padding: 0.5rem 5%; font-size: 0.85rem; border-bottom: 1px solid #1a1a1a;
+        }
+        .top-bar-content {
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .navbar {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 1.5rem 5%; background-color: rgba(18, 18, 18, 0.95);
+            position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #333;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+        .logo .header-logo { height: 75px; width: auto; }
+        .nav-links { display: flex; gap: 2rem; }
+        .nav-links a:hover { color: var(--primary-orange); }
+
+        /* --- CONTACT HEADER & SECTION --- */
+        .contact-hero {
+            padding: 5rem 10% 2rem 10%;
+            background-color: var(--bg-card);
+            text-align: center;
+            border-bottom: 5px solid var(--primary-orange);
+        }
+        .contact-hero h1 { font-size: 3.5rem; margin-bottom: 0.5rem; }
+        .contact-hero h1 span { color: var(--primary-orange); }
+        .contact-hero p { color: var(--text-muted); }
+
+        .contact-content {
+            padding: 5rem 10%;
+            display: grid;
+            grid-template-columns: 2fr 1fr; /* Form takes 2/3, Info takes 1/3 */
+            gap: 50px;
+        }
+        
+        /* --- 1. CONTACT FORM STYLING --- */
+        .contact-form-container {
+            background-color: var(--bg-card);
+            padding: 40px;
+            border: 1px solid #333;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+        .contact-form-container h2 {
+            font-size: 2rem;
+            margin-bottom: 25px;
+            border-bottom: 3px solid var(--primary-orange);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        .contact-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        /* Make the message and button span both columns */
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: white;
+        }
+
+        .form-group input, 
+        .form-group textarea {
+            padding: 12px;
+            border: 1px solid #444;
+            background-color: #2b2b2b;
+            color: var(--text-main);
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        .form-group input:focus, 
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-orange);
+            box-shadow: 0 0 5px rgba(255, 94, 0, 0.5);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .submit-btn {
+            background-color: var(--primary-orange);
+            color: white;
+            padding: 1rem 2.5rem;
+            border: none;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 10px;
+        }
+        .submit-btn:hover {
+            background-color: var(--secondary-orange);
+        }
+
+        /* --- 2. CONTACT INFO STYLING --- */
+        .contact-info-container {
+            background-color: var(--bg-card);
+            padding: 40px;
+            border: 1px solid #333;
+            align-self: start; /* Stick to the top */
+        }
+        .contact-info-container h2 {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            border-bottom: 3px solid var(--primary-orange);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        .info-item i {
+            font-size: 1.5rem;
+            color: var(--primary-orange);
+            margin-right: 15px;
+            margin-top: 5px;
+        }
+        .info-item div p {
+            margin: 0;
+            font-size: 1rem;
+            color: white;
+        }
+        .info-item div span {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        
+        /* --- 3. MAP LOCATION --- */
+        .map-section {
+            padding: 0 10% 5rem 10%;
+            background-color: var(--bg-dark);
+        }
+        .map-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+        .map-placeholder {
+            width: 100%;
+            height: 450px;
+            background-color: #333;
+            border: 5px solid var(--primary-orange);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+        .map-placeholder iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* --- WHATSAPP BUTTON --- */
+        .whatsapp-container {
+            position: fixed; left: 0; bottom: 100px; z-index: 2000;
+            transform: translateX(-70%); transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.27), opacity 0.3s ease;
+            background-color: #25D366; padding: 12px 25px 12px 15px; border-radius: 0 30px 30px 0;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.5); display: flex; align-items: center; gap: 12px;
+            cursor: pointer; opacity: 0.6; 
+        }
+        .whatsapp-container:hover { transform: translateX(0); opacity: 1; }
+
+        /* --- FOOTER --- (Reused from index.html) */
+        footer {
+            background-color: var(--bg-footer); padding: 4rem 10% 1rem 10%;
+            border-top: 3px solid var(--primary-orange); color: #ccc;
+        }
+        .footer-container {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem; margin-bottom: 3rem;
+        }
+
+        /* --- RESPONSIVE ADJUSTMENTS --- */
+        @media (max-width: 992px) {
+            .contact-content {
+                grid-template-columns: 1fr; /* Stack form and info vertically */
+            }
+            .contact-form {
+                grid-template-columns: 1fr; /* Stack form inputs vertically */
+            }
+            .contact-form .form-group:not(.full-width) {
+                grid-column: 1 / -1; /* Make all form groups full width */
+            }
+        }
+        @media (max-width: 768px) {
+            .logo .header-logo { height: 40px; } 
+            .contact-hero h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <div class="top-bar-content">
+            <div class="contact-info">
+                <span><i class="fas fa-phone"></i> +91-9841 75004</span>
+                <span><i class="fas fa-envelope"></i> info@zirex.com</span>
+            </div>
+            <div class="Announcement">
+                GRAND OPENING ON 1/1/2026!
+            </div>
+        </div>
+    </div>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="zirex.jpg" alt="Zirex Dental Laboratory Logo" class="header-logo">
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li> 
+            <li><a href="#">Gallery</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html" style="color: var(--primary-orange);">Contact</a></li> </ul>
+    </nav>
+
+    <section class="contact-hero">
+        <h1>Get in <span>Touch</span></h1>
+        <p>We are ready to discuss your next restorative project. Reach out to our expert team.</p>
+    </section>
+
+    <div class="contact-content">
+        
+        <div class="contact-form-container">
+            <h2>Send Us a Message</h2>
+            <form class="contact-form" action="submit_form_endpoint" method="POST">
+                
+                <div class="form-group">
+                    <label for="name">Your Name *</label>
+                    <input type="text" id="name" name="name" required placeholder="Dr. John Doe">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required placeholder="clinic@example.com">
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="+1 555 123 4567">
+                </div>
+                
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" placeholder="Inquiry about Full Arch Zirconia">
+                </div>
+                
+                <div class="form-group full-width">
+                    <label for="message">Your Message *</label>
+                    <textarea id="message" name="message" required placeholder="Describe your project details or question here..."></textarea>
+                </div>
+                
+                <div class="form-group full-width">
+                    <button type="submit" class="submit-btn">Send Inquiry</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="contact-info-container">
+            <h2>Office Information</h2>
+            
+            <div class="info-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <div>
+                    <p>Laboratory Address</p>
+                    <span>123 Zirconia Street, Floor 5, Dental City, DC 90210</span>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <i class="fas fa-phone"></i>
+                <div>
+                    <p>Call Us</p>
+                    <span>Primary: +1 (555) 123-4567<br>Fax: +1 (555) 987-6543</span>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <i class="fas fa-envelope"></i>
+                <div>
+                    <p>Email Us</p>
+                    <span>For Inquiries: info@zirex.com<br>For Orders: orders@zirex.com</span>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <i class="fas fa-clock"></i>
+                <div>
+                    <p>Office Hours</p>
+                    <span>Mon - Fri: 9:00 AM - 5:00 PM (EST)<br>Closed on weekends and public holidays.</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <section class="map-section">
+        <h2>Find Our Laboratory</h2>
+        <div class="map-placeholder">
+             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.218155986968!2d-122.41941578468165!3d37.77492987975914!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80858066e4a2e587%3A0x6b8d4f454f76d4a5!2sSan%20Francisco%2C%20CA!5e0!3m2!1sen!2sus!4v1628109876543!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </section>
+    
+
+   <a href="https://wa.me/91984175004?text=Hi%20Zirex.%20I%20saw%20your%20Zirconia%20Gallery%20and%20would%20like%20to%20request%20a%20quote%20for%20a%20case.%20Could%20you%20please%20send%20me%20your%20price%20list%3F" target="_blank" class="whatsapp-container">
+    <i class="fab fa-whatsapp whatsapp-icon"></i>
+    <span class="whatsapp-text">Chat with us</span>
+</a>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>Zirex Laboratory</h3>
+                <p>An Xclusive Zirconia Dental Laboratory dedicated to high-quality, precision dental solutions.</p>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Contact Info</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> 123 Zirconia Street, Dental City</li>
+                    <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                    <li><i class="fas fa-envelope"></i> hello@zirex.com</li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Follow Us</h3>
+                <div class="footer-socials">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2026 Zirex. Designed with precision.</p>
+        </div>
+    </footer>
+</body>
+</html>
+
+        <div class="contact-info-container">
+            <h2>Office Information</h2>
+            
+            <div class="info-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <div>
+                    <p>Laboratory Address</p>
+                    <span>Manapparai, Tamil Nadu, India</span>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <i class="fas fa-phone"></i>
+                <div>
+                    <p>Call Us</p>
+                    <span>Primary: +91 9841 75004<br>Fax: +91 (555) 987-6543 (Placeholder)</span>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <i class="fas fa-envelope"></i>
+                <div>
+                    <p>Email Us</p>
+                    <span>For Inquiries: contact@zirexlabs.com<br>For Orders: orders@zirexlabs.com (Placeholder)</span>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <i class="fas fa-clock"></i>
+                <div>
+                    <p>Office Hours</p>
+                    <span>Mon - Fri: 9:00 AM - 5:00 PM (IST)<br>Closed on weekends and public holidays.</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>Zirex Laboratory</h3>
+                <p>An Xclusive Zirconia Dental Laboratory dedicated to high-quality, precision dental solutions.</p>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Contact Info</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> Manapparai, Tamil Nadu, India</li>
+                    <li><i class="fas fa-phone"></i> +91 9841 75004</li>
+                    <li><i class="fas fa-envelope"></i> contact@zirexlabs.com</li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Follow Us</h3>
+                <div class="footer-socials">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2026 Zirex Labs. Designed with precision.</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zirex Admin Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* --- CSS Variables --- */
+        :root {
+            --primary-orange: #ff5e00; 
+            --bg-dark: #1e1e1e;
+            --bg-sidebar: #2a2a2a;
+            --bg-content: #f4f4f4;
+            --text-main: #f4f4f4;
+            --text-dark: #333;
+            --transition: all 0.3s ease-in-out;
+        }
+
+        /* --- Global Reset & Visibility Fix --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
+        body { 
+            background-color: white; /* Changed for maximum visibility */
+            display: block; /* Important for stacking */
+            min-height: 100vh; 
+            color: var(--text-dark); 
+        }
+        a { text-decoration: none; color: inherit; }
+        
+        /* --- Sidebar (Navigation) - NOW STACKED --- */
+        .sidebar {
+            width: 100%; /* Full width when stacked */
+            background-color: var(--bg-sidebar);
+            color: var(--text-main);
+            padding: 10px 0;
+            display: flex; /* Using flex for horizontal nav items */
+            flex-direction: row;
+            justify-content: space-around;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+            position: relative;
+        }
+
+        .sidebar-header {
+            display: none; /* Hide large header for compact navigation */
+        }
+
+        .sidebar ul { 
+            list-style: none; 
+            padding: 0 15px; 
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .sidebar ul li a {
+            display: block;
+            padding: 10px 15px;
+            margin: 5px;
+            color: var(--text-main);
+            border-radius: 4px;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+        .sidebar ul li a:hover, .sidebar ul li a.active {
+            background-color: var(--primary-orange);
+            color: white;
+            box-shadow: none;
+        }
+        .sidebar ul li a i { margin-right: 5px; }
+
+        /* --- Main Content Area - NO MARGIN OFFSET --- */
+        .main-content {
+            flex-grow: 1;
+            padding: 20px;
+            background-color: var(--bg-content);
+        }
+
+        /* --- Top Header Bar --- */
+        .top-navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: white;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .user-info .avatar {
+            width: 35px;
+            height: 35px;
+            background-color: var(--primary-orange);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+
+        /* --- Dashboard Cards (Key Metrics) --- */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            color: var(--primary-orange);
+        }
+
+        .card-info h3 {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .card-info p {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        /* --- Tables and Charts (Recent Activity) --- */
+        .recent
