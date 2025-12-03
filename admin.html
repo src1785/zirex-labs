@@ -11,135 +11,108 @@
         /* --- CSS Variables --- */
         :root {
             --primary-orange: #ff5e00; 
-            --bg-dark: #1e1e1e;
-            --bg-sidebar: #2a2a2a;
             --bg-content: #f4f4f4;
-            --text-main: #f4f4f4;
             --text-dark: #333;
-            --transition: all 0.3s ease-in-out;
         }
 
-        /* --- Global Reset & Visibility Fix --- */
+        /* --- Minimal Global Styles --- */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
         body { 
-            background-color: white; /* Changed for maximum visibility */
-            display: block; /* Important for stacking */
-            min-height: 100vh; 
+            background-color: white; /* Guaranteed visible background */
             color: var(--text-dark); 
-        }
-        a { text-decoration: none; color: inherit; }
-        
-        /* --- Sidebar (Navigation) - NOW STACKED --- */
-        .sidebar {
-            width: 100%; /* Full width when stacked */
-            background-color: var(--bg-sidebar);
-            color: var(--text-main);
-            padding: 10px 0;
-            display: flex; /* Using flex for horizontal nav items */
-            flex-direction: row;
-            justify-content: space-around;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.5);
-            position: relative;
-        }
-
-        .sidebar-header {
-            display: none; /* Hide large header for compact navigation */
-        }
-
-        .sidebar ul { 
-            list-style: none; 
-            padding: 0 15px; 
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        .sidebar ul li a {
-            display: block;
-            padding: 10px 15px;
-            margin: 5px;
-            color: var(--text-main);
-            border-radius: 4px;
-            transition: var(--transition);
-            white-space: nowrap;
-        }
-        .sidebar ul li a:hover, .sidebar ul li a.active {
-            background-color: var(--primary-orange);
-            color: white;
-            box-shadow: none;
-        }
-        .sidebar ul li a i { margin-right: 5px; }
-
-        /* --- Main Content Area - NO MARGIN OFFSET --- */
-        .main-content {
-            flex-grow: 1;
             padding: 20px;
-            background-color: var(--bg-content);
         }
+        h1, h2, h3 { color: var(--primary-orange); margin-bottom: 10px; }
+        a { text-decoration: none; color: var(--primary-orange); }
 
-        /* --- Top Header Bar --- */
-        .top-navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 20px;
-            background-color: white;
-            border-radius: 8px;
+        /* --- Simple Stacking Layout --- */
+        .sidebar { /* The main navigation section */
+            width: 100%;
+            background-color: #eee;
+            padding: 10px;
             margin-bottom: 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-bottom: 3px solid var(--primary-orange);
+        }
+        .sidebar ul { list-style: none; display: block; }
+        .sidebar ul li { display: inline-block; margin-right: 15px; }
+
+        .main-content {
+            padding: 0;
+            max-width: 1200px;
+            margin: auto;
         }
 
-        .user-info {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .user-info .avatar {
-            width: 35px;
-            height: 35px;
-            background-color: var(--primary-orange);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-        }
-
-        /* --- Dashboard Cards (Key Metrics) --- */
+        /* --- Dashboard Cards (Simple Stacking) --- */
         .dashboard-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            /* Fallback to simple block display instead of complex grid/flex */
+            display: block; 
             margin-bottom: 30px;
         }
 
         .card {
-            background-color: white;
+            background-color: #fff;
             padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            margin-bottom: 15px; /* Use margin for spacing instead of grid gap */
+            border: 1px solid #ddd;
         }
 
-        .card-icon {
-            font-size: 2.5rem;
-            color: var(--primary-orange);
+        /* --- Tables --- */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
         }
-
-        .card-info h3 {
-            font-size: 1rem;
-            color: #666;
-            margin-bottom: 5px;
+        table th, table td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
         }
+    </style>
+</head>
+<body>
 
-        .card-info p {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--text-dark);
-        }
+    <div class="sidebar">
+        <h2>Zirex Admin Panel</h2>
+        <ul>
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Products</a></li>
+            <li><a href="#">Reviews</a></li>
+            <li><a href="#">Settings</a></li>
+        </ul>
+    </div>
 
-        /* --- Tables and Charts (Recent Activity) --- */
-        .recent
+    <div class="main-content">
+        
+        <h1>Dashboard Overview</h1>
+
+        <div class="dashboard-grid">
+            <div class="card">
+                <h3>New Leads (Last 7 Days): 42</h3>
+                <p>Metrics for new contact submissions.</p>
+            </div>
+            <div class="card">
+                <h3>Total Products: 8</h3>
+                <p>Total items listed in the database.</p>
+            </div>
+            <div class="card">
+                <h3>Pending Reviews: 3</h3>
+                <p>Reviews awaiting moderation.</p>
+            </div>
+        </div>
+        
+        <div class="content-manager">
+            <h2>Website Content Management</h2>
+            <table>
+                <thead>
+                    <tr><th>Product Name</th><th>Status</th><th>Action</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Signature Aesthetic Crowns</td><td>Live</td><td><a href="#">Edit</a></td></tr>
+                    <tr><td>Ultra Max Monolithic</td><td>Live</td><td><a href="#">Edit</a></td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+</body>
+</html>
