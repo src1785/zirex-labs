@@ -83,4 +83,53 @@ footer { background: black; padding: 3rem 5%; border-top: 1px solid var(--border
 @media (max-width: 768px) {
     .hero, .about-wrapper, .contact-container { flex-direction: column; text-align: center; }
     .nav-menu { display: none; } /* Simplified for demo */
+}/* Footer Styles */
+footer { 
+    background: #000; 
+    padding: 4rem 5%; 
+    border-top: 1px solid #222; 
+    margin-top: auto; 
 }
+
+.footer-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+    gap: 2rem; 
+}
+
+.f-col h4 { 
+    color: white; 
+    margin-bottom: 1.5rem; 
+}
+
+.f-col h4 span { 
+    color: #ff5e00; /* Orange Highlight */
+}
+
+.f-col ul { 
+    list-style: none; 
+    padding: 0; 
+}
+
+.f-col ul li { 
+    margin-bottom: 0.5rem; 
+}
+
+.f-col ul li a { 
+    color: #666; 
+    text-decoration: none; 
+    transition: 0.3s; 
+}
+
+.f-col ul li a:hover { 
+    color: #ff5e00; /* Orange Hover */
+}
+
+.copyright { 
+    text-align: center; 
+    margin-top: 3rem; 
+    color: #444; 
+    border-top: 1px solid #111; 
+    padding-top: 2rem; 
+}
+
