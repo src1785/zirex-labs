@@ -1,95 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Zirex | Precision Zirconia Dental Laboratory | India's Xclusive Lab</title>
-    <meta name="description" content="Zirex is a state-of-the-art dental laboratory in India, dedicated solely to fabricating monolithic and aesthetic layered Zirconia crowns, bridges, and custom implant solutions with guaranteed precision and fit.">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    <style>
-        /* --- CSS VARIABLES --- */
-        :root {
-            --primary-orange: #ff5e00; 
-            --bg-dark: #121212;
-            --bg-card: #1e1e1e;
-            --bg-section: #181818; 
-            --bg-footer: #080808;
-            --text-main: #f4f4f4;
-            --text-muted: #a0a0a0;
-            --transition: all 0.3s ease-in-out;
-            --gradient-start: #ff5e00;
-            --gradient-end: #ffa800;
-        }
-
-        /* --- GLOBAL RESET & GRADIENT BODY --- */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Roboto', sans-serif;
-            color: var(--text-main);
-            line-height: 1.6;
-            background: linear-gradient(180deg, var(--bg-dark) 0%, #000000 100%);
-            background-attachment: scroll; 
-        }
-        
-        a { text-decoration: none; color: inherit; transition: var(--transition); }
-        ul { list-style: none; }
-        section { max-width: 1200px; margin: auto; padding: 5rem 5%; display: block !important; } 
-        h2 { font-size: 2.5rem; margin-bottom: 3rem; color: white; text-align: center; font-weight: 700; }
-        h2 span { color: var(--primary-orange); }
-
-        /* --- UTILITIES --- */
-        .cta-button {
-            display: inline-block; padding: 1rem 2.5rem; background-color: var(--primary-orange); 
-            color: white; font-weight: bold; border-radius: 4px; letter-spacing: 0.5px;
-            transition: var(--transition);
-        }
-        .cta-button:hover { background-color: #e04e00; transform: translateY(-2px); }
-        
-        /* --- NAVIGATION (Stable) --- */
-        .top-bar { width: 100%; background-color: #000; color: var(--text-muted); padding: 0.5rem 5%; font-size: 0.85rem; border-bottom: 1px solid #1a1a1a; }
-        .top-bar-content { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: auto; }
-        .top-bar .contact-info i { color: var(--primary-orange); margin-right: 5px; }
-
-        .navbar {
-            display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 5%; 
-            background-color: transparent; 
-            position: sticky; top: 0; z-index: 1000; 
-            border-bottom: 1px solid var(--primary-orange); 
-        }
-        .nav-content { display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 1200px; margin: auto; }
-        
-        .logo {
-            background: linear-gradient(to right, #ffffff, #000000);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        .logo h2 { font-size: 1.8rem; padding: 0; margin: 0; display: inline-block; } 
-
-        .nav-links { display: flex; gap: 2rem; }
-        .nav-links a { font-weight: 500; font-size: 1rem; position: relative; }
-        .nav-links a::after { content: ''; position: absolute; left: 0; bottom: -5px; width: 0; height: 2px; background-color: var(--primary-orange); transition: var(--transition); }
-        .nav-links a:hover::after, .nav-links a[href="index.html"]::after { width: 100%; }
-        .nav-links a[href="index.html"] { color: var(--primary-orange); }
-
-        main { display: block !important; overflow: visible !important; min-height: 100vh; }
-        
-        /* --- HERO SECTION (OLD - HIDDEN) --- */
-        .hero-section {
-            display: none !important; 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Zirex | Precision Zirconia Dental Laboratory | India's Xclusive Lab</title>
+    <meta name="description" content="Zirex is a state-of-the-art dental laboratory in India, dedicated solely to fabricating monolithic and aesthetic layered Zirconia crowns, bridges, and custom implant solutions.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* --- CSS VARIABLES --- */
+        :root {
+            --primary-orange: #ff5e00; 
+            --bg-dark: #121212;
+            --bg-card: #1e1e1e;
+            --bg-section: #181818; 
+            --bg-footer: #080808;
+            --text-main: #f4f4f4;
+            --text-muted: #a0a0a0;
+            --transition: all 0.3s ease-in-out;
+            --gradient-start: #ff5e00;
+            --gradient-end: #ffa800;
         }
 
-        /* --- NEW HERO SLIDER SECTION STYLES --- */
+        /* --- GLOBAL RESET & GRADIENT BODY --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        html {
+            height: 100%;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--text-main);
+            line-height: 1.6;
+            
+            /* FIX: Add a solid background color first as a fallback */
+            background-color: var(--bg-dark);
+            
+            /* FIX: Gradient definition */
+            background-image: linear-gradient(180deg, #121212 0%, #000000 100%);
+            
+            /* FIX: 'fixed' ensures background covers the whole screen while scrolling */
+            background-attachment: fixed; 
+            background-repeat: no-repeat;
+            background-size: cover;
+            min-height: 100vh;
+        }
+        
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
+        ul { list-style: none; }
+        section { max-width: 1200px; margin: auto; padding: 5rem 5%; display: block !important; } 
+        h2 { font-size: 2.5rem; margin-bottom: 3rem; color: white; text-align: center; font-weight: 700; }
+        h2 span { color: var(--primary-orange); }
+
+        /* --- UTILITIES --- */
+        .cta-button {
+            display: inline-block; padding: 1rem 2.5rem; background-color: var(--primary-orange); 
+            color: white; font-weight: bold; border-radius: 4px; letter-spacing: 0.5px;
+            transition: var(--transition);
+        }
+        .cta-button:hover { background-color: #e04e00; transform: translateY(-2px); }
+        
+        /* --- NAVIGATION --- */
+        .top-bar { width: 100%; background-color: #000; color: var(--text-muted); padding: 0.5rem 5%; font-size: 0.85rem; border-bottom: 1px solid #1a1a1a; }
+        .top-bar-content { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: auto; }
+        .top-bar .contact-info i { color: var(--primary-orange); margin-right: 5px; }
+
+        .navbar {
+            display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 5%; 
+            background-color: rgba(18, 18, 18, 0.95); /* Slight transparency */
+            position: sticky; top: 0; z-index: 1000; 
+            border-bottom: 1px solid var(--primary-orange); 
+            backdrop-filter: blur(5px);
+        }
+        .nav-content { display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 1200px; margin: auto; }
+        
+        .logo {
+            background: linear-gradient(to right, #ffffff, #000000); /* Note: Gradient text on black might need tweaking */
+            background: #fff; /* Fallback to white for visibility */
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .logo h2 { font-size: 1.8rem; padding: 0; margin: 0; display: inline-block; color: white; /* Force white for visibility */ } 
+
+        .nav-links { display: flex; gap: 2rem; }
+        .nav-links a { font-weight: 500; font-size: 1rem; position: relative; color: #fff; }
+        .nav-links a::after { content: ''; position: absolute; left: 0; bottom: -5px; width: 0; height: 2px; background-color: var(--primary-orange); transition: var(--transition); }
+        .nav-links a:hover::after, .nav-links a[href="index.html"]::after { width: 100%; }
+        .nav-links a[href="index.html"] { color: var(--primary-orange); }
+
+        main { display: block !important; overflow: visible !important; min-height: 100vh; }
+        
+        /* --- HERO SECTION --- */
+        .hero-section { display: none !important; }
+
+        /* --- NEW HERO SLIDER SECTION STYLES --- */
         .new-hero-slider {
             max-width: 1200px;
             margin: auto;
             padding: 0 5% 5rem 5%; 
-            background-color: #000; 
+            background-color: transparent; /* Changed from #000 to blend with body */
             display: flex;
             align-items: center; 
             justify-content: space-between;
@@ -98,43 +112,17 @@
             border-bottom: 2px solid var(--primary-orange);
         }
 
-        .hero-content {
-            flex: 1; 
-            padding-right: 2rem;
-        }
-
-        .hero-image-container {
-            flex: 1.5; 
-            display: flex;
-            justify-content: flex-end; 
-            overflow: hidden;
-        }
-
-        .hero-slider-img {
-            width: 100%;
-            height: auto;
-            object-fit: cover; 
-            max-height: 500px; 
-            display: block;
-        }
+        .hero-content { flex: 1; padding-right: 2rem; }
+        .hero-image-container { flex: 1.5; display: flex; justify-content: flex-end; overflow: hidden; }
+        .hero-slider-img { width: 100%; height: auto; object-fit: cover; max-height: 500px; display: block; border-radius: 4px;}
 
         .hero-content h1 { 
-            font-size: 5rem; 
-            margin-bottom: 1rem; 
-            color: white; 
-            font-weight: 900; 
-            line-height: 1; 
-            margin-top: 0; 
-            padding: 0;
-            text-align: left;
+            font-size: 5rem; margin-bottom: 1rem; color: white; 
+            font-weight: 900; line-height: 1; margin-top: 0; padding: 0; text-align: left;
         }
         .hero-content p { 
-            font-size: 1.2rem; 
-            color: var(--text-main); 
-            max-width: 450px; 
-            margin: 0 0 2rem 0; 
-            font-weight: 300; 
-            text-align: left;
+            font-size: 1.2rem; color: var(--text-main); max-width: 450px; 
+            margin: 0 0 2rem 0; font-weight: 300; text-align: left;
         }
         .hero-content .cta-button {
             background-color: rgba(255, 94, 0, 0.2); 
@@ -142,279 +130,53 @@
             border-radius: 2px;
             padding: 0.8rem 1.8rem;
         }
-        .hero-content .cta-button:hover {
-            background-color: var(--primary-orange);
+        .hero-content .cta-button:hover { background-color: var(--primary-orange); }
+
+        /* --- GRID STYLES FOR PRODUCT SECTIONS --- */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
         }
-        /* END NEW HERO SLIDER STYLES */
-
-        /* --- GRID STYLES FOR PRODUCT SECTIONS --- */
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .product-card {
-            background-color: var(--bg-card);
-            border-radius: 8px;
-            overflow: hidden;
-            border: 1px solid #333;
-            transition: var(--transition);
-            position: relative; /* Needed for gradient border */
-            z-index: 1;
-        }
-        
-        /* Gradient Border Animation CSS */
-        @keyframes rotating-gradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .product-card::before {
-            content: '';
-            position: absolute;
-            top: -2px; right: -2px; bottom: -2px; left: -2px;
-            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end), var(--gradient-start));
-            background-size: 400% 400%;
-            border-radius: 10px;
-            z-index: -1;
-            opacity: 0; /* Hidden by default */
-            transition: opacity 0.5s ease-in-out;
-        }
-
-        .product-card:hover { 
-            transform: translateY(-5px); 
-            box-shadow: 0 8px 15px rgba(0,0,0,0.4); 
-        }
-        
-        .product-card:hover::before {
-            opacity: 1; /* Show gradient on hover */
-            animation: rotating-gradient 4s ease infinite;
-        }
-        /* End Gradient Border Animation CSS */
-
-        .card-image { height: 200px; background-color: #333; }
-        .card-image img { width: 100%; height: 100%; object-fit: cover; }
-        .card-content { padding: 1.5rem; }
-        .card-content h3 { color: var(--primary-orange); margin-bottom: 0.5rem; font-size: 1.5rem; }
-        .card-content p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; }
-        
-        /* --- ANIMATION KEYFRAMES & APPLICATION (Entrance) --- */
-        @keyframes fadeInSlide {
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-        .section-animated {
-            opacity: 0;
-            animation: fadeInSlide 0.8s ease-out forwards;
-        }
-        /* Staggered animation delays for the three product sections */
-        #slider-aesthetic { animation-delay: 0.2s; }
-        #slider-monolithic { animation-delay: 0.4s; }
-        #slider-implants { animation-delay: 0.6s; }
-        .reviews-section { animation-delay: 0.8s; }
-
-
-        /* --- REVIEWS SECTION --- */
-        .reviews-section {
-            background-color: var(--bg-dark);
-            border-top: 1px solid #333;
-        }
-        .review-grid {
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-        .review-card {
-            background-color: var(--bg-card);
-            padding: 25px;
-            border-radius: 8px;
-            border-left: 4px solid var(--primary-orange);
-        }
-        
-        .review-card blockquote { font-style: italic; color: #ccc; margin-bottom: 15px; font-size: 1.1rem; line-height: 1.4; }
-        .reviewer-info { font-weight: 700; color: white; }
-        .reviewer-info small { color: var(--primary-orange); font-weight: 400; display: block; margin-top: 3px; }
-
-        /* --- WHATSAPP & FOOTER (Stable) --- */
-        .whatsapp-container {
-            position: fixed; left: 0; bottom: 100px; z-index: 3000;
-            background-color: #25D366; padding: 12px 25px 12px 15px; border-radius: 0 30px 30px 0;
-            box-shadow: 2px 2px 10px rgba(0,0,0,0.5); display: flex; align-items: center; gap: 12px; cursor: pointer;
-        }
-        .whatsapp-icon { font-size: 2.2rem; color: white; }
-        .whatsapp-text { color: white; font-weight: bold; font-size: 1rem; white-space: nowrap; }
-
-        footer { background-color: var(--bg-footer); padding: 4rem 5% 1rem 5%; border-top: 3px solid var(--primary-orange); color: #ccc; }
-        .footer-container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 2rem; margin-bottom: 3rem; max-width: 1200px; margin: auto auto 3rem; }
-        .footer-col { flex-basis: 200px; }
-        .footer-col h3 { color: white; margin-bottom: 1.5rem; font-size: 1.3rem; border-left: 3px solid var(--primary-orange); padding-left: 10px; }
-        .footer-col i { color: var(--primary-orange); width: 25px; }
-        .copyright { text-align: center; border-top: 1px solid #333; padding-top: 1.5rem; font-size: 0.8rem; color: #666; }
-
-        /* --- RESPONSIVE ADJUSTMENTS (Stable) --- */
-        @media (max-width: 768px) {
-            .navbar .nav-content { flex-direction: column; gap: 15px; text-align: center; }
-            .nav-links { justify-content: center; }
-            
-            .new-hero-slider {
-                flex-direction: column; /* Stack vertically */
-                text-align: center;
-                padding: 5rem 5%;
-                min-height: 400px; 
-            }
-            .hero-content {
-                padding-right: 0;
-                margin-bottom: 2rem;
-            }
-            .hero-image-container {
-                justify-content: center;
-            }
-            .hero-content h1 {
-                font-size: 3rem;
-                text-align: center;
-            }
-            .hero-content p {
-                text-align: center;
-            }
-        }
-    </style>
-</head>
-<body>
-
-    <div class="top-bar">
-        <div class="top-bar-content">
-            <div class="contact-info">
-                <span><i class="fas fa-phone"></i> +91-9841 75004</span>
-                <span><i class="fas fa-envelope"></i> info@zirex.com</span>
-            </div>
-            <div class="announcement">
-                GRAND OPENING ON 1/1/2026!
-            </div>
-        </div>
-    </div>
-    
-    <nav class="navbar">
-        <div class="nav-content">
-            <div class="logo">
-                <h2>ZIREX LABS</h2>
-            </div>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="products.html">Products</a></li> 
-                <li><a href="gallery.html">Gallery</a></li>
-                <li><a href="about.html">About Us</a></li> 
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
-    
-    <main>
-    
-                <section class="hero-section">
-            <h1>Zirex Laboratory: <span>The Future of Zirconia</span></h1>
-            <p>India's Xclusive dental lab dedicated solely to high-precision, aesthetic CAD/CAM Zirconia restorations. Guaranteed fit, guaranteed strength.</p>
-            <a href="products.html" class="cta-button">View Our Zirconia Products</a>
-        </section>
         
-        <section class="new-hero-slider">
-            <div class="hero-content">
-                <h1>TRANSFORM <br> YOUR <span style="color: var(--primary-orange);">SMILE.</span></h1>
-                <p>Experience the confidence of natural-looking, precision-crafted dental crowns.</p>
-                <a href="products.html" class="cta-button">[ DISCOVER MORE ]</a>
-            </div>
-            <div class="hero-image-container">
-                <img src="SLIDER.jpeg" alt="Precision-crafted dental crowns on a model" class="hero-slider-img">
-            </div>
-        </section>
+        .product-card {
+            background-color: var(--bg-card);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #333;
+            transition: var(--transition);
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Gradient Border Animation CSS */
+        @keyframes rotating-gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
 
-        <section class="slider-section section-animated" id="slider-aesthetic">
-            <h2>1. Aesthetic <span>Layered Zirconia</span></h2>
-            <div class="grid-container">
-                
-                <div class="product-card">
-                    <div class="card-image"><img src="https://images.unsplash.com/photo-1549480111-5421c6183e91?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Signature Aesthetic Crown - Layered"></div>
-                    <div class="card-content">
-                        <h3>Signature Crowns (Veneered)</h3>
-                        <p>For maximum vitality and life-like translucency in the anterior region. Full contour Zirconia core with layered porcelain.</p>
-                        <a href="products.html" class="cta-button" style="padding: 0.6rem 1.2rem;">Learn More</a>
-                    </div>
-                </div>
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: -2px; right: -2px; bottom: -2px; left: -2px;
+            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end), var(--gradient-start));
+            background-size: 400% 400%;
+            border-radius: 10px;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
 
-                <div class="product-card">
-                    <div class="card-image"><img src="https://images.unsplash.com/photo-1582260654157-550308003666?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="High Translucency Zirconia - Anterior"></div>
-                    <div class="card-content">
-                        <h3>High Translucency HT</h3>
-                        <p>Optimal balance of aesthetics and strength. Perfect for single units and short bridges where natural looks are paramount.</p>
-                        <a href="products.html" class="cta-button" style="padding: 0.6rem 1.2rem;">Learn More</a>
-                    </div>
-                </div>
+        .product-card:hover { transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.4); }
+        .product-card:hover::before { opacity: 1; animation: rotating-gradient 4s ease infinite; }
 
-                <div class="product-card">
-                    <div class="card-image"><img src="https://images.unsplash.com/photo-1579541530188-66236b280b1e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="E.max Hybrid Zirconia - close up"></div>
-                    <div class="card-content">
-                        <h3>E.max Hybrid Solutions</h3>
-                        <p>Combining the strength of Zirconia with the famed aesthetic of Lithium Disilicate for challenging cosmetic cases.</p>
-                        <a href="products.html" class="cta-button" style="padding: 0.6rem 1.2rem;">Learn More</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <section class="slider-section section-animated" id="slider-monolithic" style="background-color: var(--bg-dark);">
-            <h2>2. High-Strength <span>Monolithic Zirconia</span></h2>
-            <div class="grid-container">
-                
-                <div class="product-card">
-                    <div class="card-image"><img src="https://images.unsplash.com/photo-1579541530188-66236b280b1e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Ultra Max Zirconia - Milled Disc"></div>
-                    <div class="card-content">
-                        <h3>Ultra Max (1400 MPa)</h3>
-                        <p>Maximum posterior strength and fracture resistance. Ideal for bruxism patients and large, stress-bearing fixed bridges.</p>
-                        <a href="products.html" class="cta-button" style="padding: 0.6rem 1.2rem;">Learn More</a>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="card-image"><img src="https://images.unsplash.com/photo-1579722359550-6a759082f42d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Pre-Shaded Zirconia - Sample"></div>
-                    <div class="card-content">
-                        <h3>Pre-Shaded Monolithic</h3>
-                        <p>Homogeneous coloring throughout the material ensures consistent shade and reduced chairside adjustment time.</p>
-                        <a href="products.html" class="cta-button" style="padding: 0.6rem 1.2rem;">Learn More</a>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="card-image"><img src="https://images.unsplash.com/photo-1582260654157-550308003666?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Posterior Full Contour Zirconia - Model"></div>
-                    <div class="card-content">
-                        <h3>Posterior Full Contour</h3>
-                        <p>Cost-effective, strong, and conservative crowns and inlays/onlays for the entire posterior segment.</p>
-                        <a href="products.html" class="cta-button" style="padding: 0.6rem 1.2rem;">Learn More</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <section class="slider-section section-animated" id="slider-implants">
-            <h2>3. Advanced <span>Implant Solutions</span></h2>
-            <div class="grid-container">
-                
-                <div class="product-card">
-                    <div class="card-image"><img src="https://images.unsplash.com/photo-1601614008167-7359591461f3?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Custom Zirconia Abutment on Implant"></div>
-                    <div class="card-content">
-                        <h3>Custom Zirconia Abutments</h3>
-                        <p>Designed for optimal soft tissue contouring and maximum aesthetic emergence with all major implant systems.</p>
-                        <a href="products.html" class="cta-button" style="padding: 0.6rem 1.2rem;">Learn More</a>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="card-image"><img src="https://images.unsplash.com/photo-1605370213038-f9b2d352b20f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Full Arch Fixed Hybrid"></div>
-                    <div class="card-content">
-                        <h3>Full Arch Fixed Hybrid</h3>
-                        <p>Screw-retained Zirconia full-arch prosthetics for durable, aesthetic, and non-removable reconstruction.</p>
-                        <a href="products.html" class="cta-button" style="padding: 0.6rem 1.2rem;">Learn More</a>
-                    </div>
-                </div>
-
-                <div class="produ
+        .card-image { height: 200px; background-color: #333; }
+        .card-image img { width: 100%; height: 100%; object-fit: cover; }
+        .card-content { padding: 1.5rem; }
+        .card-content h3 { color: var(--primary-orange); margin-bottom: 0.5rem; font-size: 1.5rem; }
+        .card-content p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; }
+        
+        /* --- ANIMATION --- */
+        @keyframes fadeInSlide {
+            
