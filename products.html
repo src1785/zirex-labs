@@ -5,6 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Products | Zirex Labs</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { background-color: #050505; background-image: none; }
+        .page-section { padding: 8rem 5%; }
+        
+        /* Card Styles matching Index */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .product-card {
+            background: #111;
+            border: 1px solid #222;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+        .product-card:hover {
+            border-color: #ff5e00;
+            transform: translateY(-10px);
+        }
+        .p-img { height: 250px; overflow: hidden; }
+        .p-img img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .product-card:hover .p-img img { transform: scale(1.1); }
+        .p-info { padding: 2rem; }
+        .p-info h3 { color: #ff5e00; font-size: 1.5rem; margin-bottom: 0.5rem; }
+        .p-info p { color: #aaa; margin-bottom: 1.5rem; }
+        
+        /* Animation */
+        .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* WhatsApp Float */
+        .whatsapp-float {
+            position: fixed; bottom: 30px; right: 30px; background-color: #25d366; color: white;
+            width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; 
+            justify-content: center; font-size: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.5); 
+            z-index: 1000; transition: 0.3s;
+        }
+        .whatsapp-float:hover { transform: scale(1.1); }
+    </style>
 </head>
 <body>
 
@@ -19,43 +62,54 @@
         </div>
     </nav>
 
-    <section>
-        <div class="page-header">
+    <section class="page-section reveal">
+        <div class="page-header" style="text-align:center; margin-bottom:3rem;">
             <h1>Our <span>Solutions</span></h1>
-            <p>Engineered for strength, designed for beauty.</p>
+            <p style="color:#888;">Engineered for strength, designed for beauty.</p>
         </div>
 
         <div class="products-grid">
             <div class="product-card">
-                <div class="p-img-box"><img src="https://placehold.co/400x300/222/555?text=Monolithic" alt="Mono"></div>
-                <div class="p-details">
+                <div class="p-img"><img src="https://placehold.co/400x300/222/555?text=Monolithic+Zirconia" alt="Monolithic"></div>
+                <div class="p-info">
                     <h3>Monolithic Zirconia</h3>
-                    <p style="color:#aaa; margin:1rem 0;">High strength solid zirconia. Unbreakable.</p>
-                    <a href="contact.html" style="color:var(--primary)">Order Now &rarr;</a>
+                    <p>High strength solid zirconia (1200 MPa). Virtually unbreakable and ideal for posterior teeth.</p>
                 </div>
             </div>
             <div class="product-card">
-                <div class="p-img-box"><img src="https://placehold.co/400x300/222/555?text=Layered" alt="Layered"></div>
-                <div class="p-details">
+                <div class="p-img"><img src="https://placehold.co/400x300/222/555?text=Layered+Zirconia" alt="Layered"></div>
+                <div class="p-info">
                     <h3>Layered Zirconia</h3>
-                    <p style="color:#aaa; margin:1rem 0;">Hand-layered porcelain for perfect aesthetics.</p>
-                    <a href="contact.html" style="color:var(--primary)">Order Now &rarr;</a>
+                    <p>Zirconia core with hand-layered porcelain. The ultimate choice for anterior aesthetics.</p>
                 </div>
             </div>
             <div class="product-card">
-                <div class="p-img-box"><img src="https://placehold.co/400x300/222/555?text=Implants" alt="Implant"></div>
-                <div class="p-details">
+                <div class="p-img"><img src="https://placehold.co/400x300/222/555?text=Implant+Abutments" alt="Implants"></div>
+                <div class="p-info">
                     <h3>Implant Solutions</h3>
-                    <p style="color:#aaa; margin:1rem 0;">Custom abutments and screw-retained crowns.</p>
-                    <a href="contact.html" style="color:var(--primary)">Order Now &rarr;</a>
+                    <p>Custom Hybrid Abutments and screw-retained crowns compatible with all major systems.</p>
+                </div>
+            </div>
+             <div class="product-card">
+                <div class="p-img"><img src="https://placehold.co/400x300/222/555?text=Emax+Veneers" alt="Emax"></div>
+                <div class="p-info">
+                    <h3>E-Max Veneers</h3>
+                    <p>Lithium disilicate veneers for Hollywood smile makeovers. High translucency.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer>
-        <div class="copyright">&copy; 2025 Zirex Labs.</div>
-    </footer>
+    <a href="https://wa.me/919876543210" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
+    <script>
+        window.addEventListener('scroll', () => {
+            document.querySelectorAll('.reveal').forEach(r => {
+                if(r.getBoundingClientRect().top < window.innerHeight - 150) r.classList.add('active');
+            });
+        });
+        // Trigger once on load
+        document.querySelectorAll('.reveal').forEach(r => r.classList.add('active'));
+    </script>
 </body>
 </html>
