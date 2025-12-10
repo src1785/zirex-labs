@@ -4,12 +4,176 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home | Zirex Labs</title>
+    
     <link rel="stylesheet" href="style.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- PAGE SPECIFIC STYLES --- */
+        
+        /* 1. Dark Background Override */
+        body { 
+            background-image: none; 
+            background-color: #050505; 
+        }
+
+        /* 2. Hero Slider Styles */
+        .slider-container {
+            position: relative;
+            height: 100vh; /* Full screen height */
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start; /* Align text to left */
+        }
+
+        .slide.active { opacity: 1; z-index: 1; }
+
+        .slide img {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            filter: brightness(0.5); /* Darken image so text pops */
+        }
+
+        .slide-content {
+            position: relative;
+            z-index: 2;
+            padding-left: 8%; /* Indentation from left */
+            max-width: 800px;
+        }
+
+        .slide-content h1 {
+            font-size: 5rem;
+            line-height: 1;
+            margin-bottom: 1.5rem;
+            color: white;
+            text-transform: uppercase;
+            font-weight: 900;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+        }
+
+        .slide-content p {
+            font-size: 1.4rem;
+            color: #ddd;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+        }
+
+        /* Custom Blue Button */
+        .btn-blue {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background-color: #2d89ef; /* Bright Blue */
+            color: white;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-radius: 4px;
+            letter-spacing: 1px;
+            box-shadow: 0 0 15px rgba(45, 137, 239, 0.5);
+            border: 1px solid #2d89ef;
+            text-decoration: none; /* Remove underline */
+            transition: 0.3s;
+        }
+        .btn-blue:hover {
+            background-color: #1a6ac6;
+            box-shadow: 0 0 25px rgba(45, 137, 239, 0.8);
+            color: white;
+        }
+
+        /* 3. Section Animations (Fade In Up) */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 4. Types of Zirconia Section */
+        .zirconia-section {
+            padding: 8rem 5%;
+            background: #0a0a0a;
+        }
+        .z-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .z-card {
+            background: #111;
+            border: 1px solid #222;
+            padding: 2rem;
+            border-radius: 12px;
+            transition: 0.3s;
+        }
+        .z-card:hover {
+            border-color: #ff5e00;
+            transform: translateY(-10px);
+        }
+        .z-card h3 { font-size: 1.5rem; color: #ff5e00; margin-bottom: 0.5rem; }
+        .z-card p { color: #aaa; font-size: 0.95rem; }
+
+        /* 5. Reviews Section */
+        .reviews-section {
+            padding: 8rem 5%;
+            background: #050505; 
+        }
+        .review-card {
+            background: #111;
+            padding: 2.5rem;
+            border-radius: 5px;
+            position: relative;
+            border-left: 4px solid #ff5e00;
+        }
+        .stars { color: #ffd700; margin-bottom: 1rem; }
+        .author { margin-top: 1.5rem; font-weight: bold; color: white; }
+        .clinic { color: #666; font-size: 0.9rem; }
+
+        /* 6. WhatsApp Float */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            z-index: 1000;
+            transition: 0.3s;
+        }
+        .whatsapp-float:hover { transform: scale(1.1); }
+
+        /* Mobile adjustments */
+        @media (max-width: 768px) {
+            .slide-content h1 { font-size: 3rem; }
+            .slide-content { padding-left: 5%; padding-right: 5%; }
+        }
+    </style>
 </head>
 <body>
 
     <nav class="navbar">
-        <a href="index.html" class="zirex.jpg">Zirex <span>Labs</span></a>
+        <a href="index.html" class="logo">Zirex <span>Labs</span></a>
         <div class="nav-menu">
             <a href="index.html" class="nav-link active">Home</a>
             <a href="products.html" class="nav-link">Products</a>
@@ -19,34 +183,132 @@
         </div>
     </nav>
 
-    <section class="hero">
-        <div class="hero-text">
-            <h1>Precision Meets <br>Aesthetics.</h1>
-            <p style="color:#aaa; margin-bottom: 2rem;">India's leading Zirconia laboratory using German precision technology.</p>
-            <a href="products.html" class="btn">Explore Crowns</a>
-            <a href="contact.html" class="btn btn-outline">Send a Case</a>
+    <div class="slider-container">
+        
+        <div class="slide active">
+            <img src="SLIDER.jpeg" alt="Transform Your Smile">
+            <div class="slide-content reveal">
+                <h1>TRANSFORM<br>YOUR SMILE.</h1>
+                <p>Experience the confidence of natural-looking, precision-crafted dental crowns.</p>
+                <a href="products.html" class="btn-blue">[ DISCOVER MORE ]</a>
+            </div>
         </div>
-        <div class="hero-img">
-            <img src="https://placehold.co/600x400/1e1e1e/ff5e00?text=Zirex+Hero" alt="Hero">
+
+        <div class="slide">
+            <img src="https://placehold.co/1920x1080/111/333?text=German+CAD+CAM" alt="Technology">
+            <div class="slide-content reveal">
+                <h1>GERMAN<br>PRECISION.</h1>
+                <p>5-Axis milling technology ensures 100% accurate marginal fit.</p>
+                <a href="about.html" class="btn-blue">OUR LAB</a>
+            </div>
+        </div>
+
+        <div class="slide">
+            <img src="https://placehold.co/1920x1080/111/333?text=Aesthetic+Results" alt="Aesthetics">
+            <div class="slide-content reveal">
+                <h1>NATURAL<br>AESTHETICS.</h1>
+                <p>Hand-layered porcelain work by master ceramists.</p>
+                <a href="gallery.html" class="btn-blue">VIEW GALLERY</a>
+            </div>
+        </div>
+
+    </div>
+
+    <section class="zirconia-section reveal">
+        <div class="page-header" style="text-align:center; margin-bottom:3rem;">
+            <h1>Types of <span>Zirconia</span></h1>
+            <p style="color:#888;">We offer a range of translucencies to match every indication.</p>
+        </div>
+        
+        <div class="z-grid">
+            <div class="z-card">
+                <h3><i class="fas fa-tooth"></i> Monolithic</h3>
+                <p>High strength (1200 MPa). Ideal for posterior bruxers where durability is priority. Chip-resistant.</p>
+            </div>
+            <div class="z-card">
+                <h3><i class="fas fa-gem"></i> High Translucency</h3>
+                <p>The perfect balance between strength and esthetics. Great for premolars and posteriors.</p>
+            </div>
+            <div class="z-card">
+                <h3><i class="fas fa-paint-brush"></i> Layered Anterior</h3>
+                <p>Zirconia coping with hand-layered E.max ceramic. The ultimate choice for front teeth esthetics.</p>
+            </div>
         </div>
     </section>
 
-    <footer>
-        <div class="footer-grid">
-            <div>
-                <h3>Zirex<span>Labs</span></h3>
-                <p style="color:#666">Precision dental aesthetics.</p>
-            </div>
-            <div>
-                <h4>Quick Links</h4>
-                <ul style="list-style:none; margin-top:10px;">
-                    <li><a href="products.html" style="color:#888">Products</a></li>
-                    <li><a href="gallery.html" style="color:#888">Gallery</a></li>
-                </ul>
-            </div>
+    <section class="reviews-section reveal">
+        <div class="page-header" style="text-align:center; margin-bottom:3rem;">
+            <h1>Dentist <span>Reviews</span></h1>
         </div>
-        <div class="copyright">&copy; 2026 Zirex Labs.</div>
-    </footer>
+        
+        <div class="z-grid"> <div class="review-card">
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p style="color:#ccc; font-style:italic;">"The marginal fit is exceptional. I rarely have to adjust anything chair-side. Zirex has improved my workflow."</p>
+                <div class="author">Dr. Rajesh Kumar</div>
+                <div class="clinic">Apollo Dental</div>
+            </div>
+
+            <div class="review-card">
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p style="color:#ccc; font-style:italic;">"My patients love the esthetics of the layered zirconia. It looks completely natural."</p>
+                <div class="author">Dr. Sarah Thomas</div>
+                <div class="clinic">Smile Care Clinic</div>
+            </div>
+
+            <div class="review-card">
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                <p style="color:#ccc; font-style:italic;">"Great service and timely delivery. The shade matching is spot on."</p>
+                <div class="author">Dr. A. Venkatesh</div>
+                <div class="clinic">City Dental Center</div>
+            </div>
+
+        </div>
+    </section>
+
+    <a href="https://wa.me/919876543210?text=Hi%20Zirex%20Labs,%20I%20am%20interested%20in%20your%20crowns." class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // --- 1. SLIDER LOGIC ---
+        const slides = document.querySelectorAll('.slide');
+        let currentSlide = 0;
+
+        function nextSlide() {
+            // Remove active class
+            slides[currentSlide].classList.remove('active');
+            // Calculate next
+            currentSlide = (currentSlide + 1) % slides.length;
+            // Add active class
+            slides[currentSlide].classList.add('active');
+        }
+
+        // Change slide every 5 seconds
+        setInterval(nextSlide, 5000);
+
+
+        // --- 2. SCROLL ANIMATION (Fade In) ---
+        window.addEventListener('scroll', reveal);
+
+        function reveal() {
+            var reveals = document.querySelectorAll('.reveal');
+
+            for (var i = 0; i < reveals.length; i++) {
+                var windowheight = window.innerHeight;
+                var revealtop = reveals[i].getBoundingClientRect().top;
+                var revealpoint = 150;
+
+                if (revealtop < windowheight - revealpoint) {
+                    reveals[i].classList.add('active');
+                } else {
+                    reveals[i].classList.remove('active');
+                }
+            }
+        }
+        
+        // Trigger once on load
+        reveal();
+    </script>
 
 </body>
 </html>
