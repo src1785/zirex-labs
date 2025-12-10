@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <title>Zirex | Precision Zirconia Dental Laboratory | India's Xclusive Lab</title>
-    <meta name="description" content="Zirex is a state-of-the-art dental laboratory in India, dedicated solely to fabricating monolithic and aesthetic layered Zirconia crowns, bridges, and custom implant solutions.">
+    <meta name="description" content="Zirex is a state-of-the-art dental laboratory in India.">
     
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -28,22 +28,14 @@
         /* --- GLOBAL RESET & GRADIENT BODY --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
-        html {
-            height: 100%;
-        }
+        html { height: 100%; }
 
         body {
             font-family: 'Roboto', sans-serif;
             color: var(--text-main);
             line-height: 1.6;
-            
-            /* FIX: Add a solid background color first as a fallback */
-            background-color: var(--bg-dark);
-            
-            /* FIX: Gradient definition */
+            background-color: var(--bg-dark); /* Fallback */
             background-image: linear-gradient(180deg, #121212 0%, #000000 100%);
-            
-            /* FIX: 'fixed' ensures background covers the whole screen while scrolling */
             background-attachment: fixed; 
             background-repeat: no-repeat;
             background-size: cover;
@@ -53,130 +45,77 @@
         a { text-decoration: none; color: inherit; transition: var(--transition); }
         ul { list-style: none; }
         section { max-width: 1200px; margin: auto; padding: 5rem 5%; display: block !important; } 
-        h2 { font-size: 2.5rem; margin-bottom: 3rem; color: white; text-align: center; font-weight: 700; }
-        h2 span { color: var(--primary-orange); }
 
-        /* --- UTILITIES --- */
-        .cta-button {
-            display: inline-block; padding: 1rem 2.5rem; background-color: var(--primary-orange); 
-            color: white; font-weight: bold; border-radius: 4px; letter-spacing: 0.5px;
-            transition: var(--transition);
-        }
-        .cta-button:hover { background-color: #e04e00; transform: translateY(-2px); }
-        
         /* --- NAVIGATION --- */
-        .top-bar { width: 100%; background-color: #000; color: var(--text-muted); padding: 0.5rem 5%; font-size: 0.85rem; border-bottom: 1px solid #1a1a1a; }
-        .top-bar-content { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: auto; }
-        .top-bar .contact-info i { color: var(--primary-orange); margin-right: 5px; }
-
         .navbar {
             display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 5%; 
-            background-color: rgba(18, 18, 18, 0.95); /* Slight transparency */
+            background-color: rgba(18, 18, 18, 0.95);
             position: sticky; top: 0; z-index: 1000; 
             border-bottom: 1px solid var(--primary-orange); 
             backdrop-filter: blur(5px);
         }
-        .nav-content { display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 1200px; margin: auto; }
         
-        .logo {
-            background: linear-gradient(to right, #ffffff, #000000); /* Note: Gradient text on black might need tweaking */
-            background: #fff; /* Fallback to white for visibility */
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        .logo h2 { font-size: 1.8rem; padding: 0; margin: 0; display: inline-block; color: white; /* Force white for visibility */ } 
+        .logo h2 { font-size: 1.8rem; margin: 0; color: white; } 
+        .logo span { color: var(--primary-orange); }
 
         .nav-links { display: flex; gap: 2rem; }
-        .nav-links a { font-weight: 500; font-size: 1rem; position: relative; color: #fff; }
-        .nav-links a::after { content: ''; position: absolute; left: 0; bottom: -5px; width: 0; height: 2px; background-color: var(--primary-orange); transition: var(--transition); }
-        .nav-links a:hover::after, .nav-links a[href="index.html"]::after { width: 100%; }
-        .nav-links a[href="index.html"] { color: var(--primary-orange); }
+        .nav-links a { font-weight: 500; font-size: 1rem; color: #fff; }
+        .nav-links a:hover { color: var(--primary-orange); }
 
-        main { display: block !important; overflow: visible !important; min-height: 100vh; }
-        
-        /* --- HERO SECTION --- */
-        .hero-section { display: none !important; }
-
-        /* --- NEW HERO SLIDER SECTION STYLES --- */
+        /* --- HERO SLIDER SECTION --- */
         .new-hero-slider {
             max-width: 1200px;
             margin: auto;
-            padding: 0 5% 5rem 5%; 
-            background-color: transparent; /* Changed from #000 to blend with body */
+            padding: 5rem 5%; 
             display: flex;
             align-items: center; 
             justify-content: space-between;
             min-height: 500px; 
-            overflow: hidden;
-            border-bottom: 2px solid var(--primary-orange);
         }
 
         .hero-content { flex: 1; padding-right: 2rem; }
-        .hero-image-container { flex: 1.5; display: flex; justify-content: flex-end; overflow: hidden; }
-        .hero-slider-img { width: 100%; height: auto; object-fit: cover; max-height: 500px; display: block; border-radius: 4px;}
-
-        .hero-content h1 { 
-            font-size: 5rem; margin-bottom: 1rem; color: white; 
-            font-weight: 900; line-height: 1; margin-top: 0; padding: 0; text-align: left;
-        }
-        .hero-content p { 
-            font-size: 1.2rem; color: var(--text-main); max-width: 450px; 
-            margin: 0 0 2rem 0; font-weight: 300; text-align: left;
-        }
-        .hero-content .cta-button {
-            background-color: rgba(255, 94, 0, 0.2); 
-            border: 2px solid var(--primary-orange);
-            border-radius: 2px;
-            padding: 0.8rem 1.8rem;
-        }
-        .hero-content .cta-button:hover { background-color: var(--primary-orange); }
-
-        /* --- GRID STYLES FOR PRODUCT SECTIONS --- */
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
+        .hero-content h1 { font-size: 4rem; margin-bottom: 1rem; color: white; font-weight: 900; line-height: 1.1; }
+        .hero-content p { font-size: 1.2rem; color: var(--text-muted); margin-bottom: 2rem; }
         
-        .product-card {
-            background-color: var(--bg-card);
-            border-radius: 8px;
-            overflow: hidden;
-            border: 1px solid #333;
-            transition: var(--transition);
-            position: relative;
-            z-index: 1;
+        .cta-button {
+            display: inline-block; padding: 1rem 2.5rem; background-color: var(--primary-orange); 
+            color: white; font-weight: bold; border-radius: 4px;
         }
-        
-        /* Gradient Border Animation CSS */
-        @keyframes rotating-gradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
+        .cta-button:hover { background-color: #e04e00; }
 
-        .product-card::before {
-            content: '';
-            position: absolute;
-            top: -2px; right: -2px; bottom: -2px; left: -2px;
-            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end), var(--gradient-start));
-            background-size: 400% 400%;
-            border-radius: 10px;
-            z-index: -1;
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out;
-        }
-
-        .product-card:hover { transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.4); }
-        .product-card:hover::before { opacity: 1; animation: rotating-gradient 4s ease infinite; }
-
-        .card-image { height: 200px; background-color: #333; }
-        .card-image img { width: 100%; height: 100%; object-fit: cover; }
-        .card-content { padding: 1.5rem; }
-        .card-content h3 { color: var(--primary-orange); margin-bottom: 0.5rem; font-size: 1.5rem; }
-        .card-content p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; }
-        
-        /* --- ANIMATION --- */
+        /* --- ANIMATION (Fixed the cut-off part) --- */
         @keyframes fadeInSlide {
-            
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo">
+            <h2>Zirex <span>Lab</span></h2>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="#">Products</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </div>
+    </nav>
+
+    <main>
+        <section class="new-hero-slider">
+            <div class="hero-content">
+                <h1>Precision Zirconia Solutions</h1>
+                <p>India's exclusive laboratory dedicated to aesthetic layered Zirconia crowns and bridges.</p>
+                <a href="#" class="cta-button">Explore Products</a>
+            </div>
+            <div class="hero-image-container">
+            </div>
+        </section>
+    </main>
+
+</body>
+</html>
