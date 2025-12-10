@@ -15,13 +15,15 @@
         /* 1. Dark Background Override */
         body { 
             background-image: none; 
-            background-color: #050505; 
+            background-color: #000000; /* Pure Black */
+            margin: 0;
+            padding-bottom: 50px;
         }
 
         /* 2. Hero Slider Styles */
         .slider-container {
             position: relative;
-            height: 100vh; /* Full screen height */
+            height: 100vh;
             width: 100%;
             overflow: hidden;
         }
@@ -33,7 +35,7 @@
             transition: opacity 1.5s ease-in-out;
             display: flex;
             align-items: center;
-            justify-content: flex-start; /* Align text to left */
+            justify-content: flex-start;
         }
 
         .slide.active { opacity: 1; z-index: 1; }
@@ -43,13 +45,13 @@
             top: 0; left: 0; width: 100%; height: 100%;
             object-fit: cover;
             z-index: -1;
-            filter: brightness(0.5); /* Darken image so text pops */
+            filter: brightness(0.5);
         }
 
         .slide-content {
             position: relative;
             z-index: 2;
-            padding-left: 8%; /* Indentation from left */
+            padding-left: 8%;
             max-width: 800px;
         }
 
@@ -60,7 +62,13 @@
             color: white;
             text-transform: uppercase;
             font-weight: 900;
+            /* Orange Shadow */
             text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+        }
+        
+        /* Highlight specific words in Orange */
+        .slide-content h1 span {
+            color: #ff5e00;
         }
 
         .slide-content p {
@@ -70,28 +78,29 @@
             font-weight: 300;
         }
 
-        /* Custom Blue Button */
-        .btn-blue {
+        /* --- THEME CHANGE: ORANGE BUTTONS --- */
+        .btn-orange {
             display: inline-block;
             padding: 1rem 3rem;
-            background-color: #2d89ef; /* Bright Blue */
+            background-color: #ff5e00; /* Zirex Orange */
             color: white;
             font-weight: 700;
             text-transform: uppercase;
             border-radius: 4px;
             letter-spacing: 1px;
-            box-shadow: 0 0 15px rgba(45, 137, 239, 0.5);
-            border: 1px solid #2d89ef;
-            text-decoration: none; /* Remove underline */
+            box-shadow: 0 0 15px rgba(255, 94, 0, 0.4);
+            border: 1px solid #ff5e00;
+            text-decoration: none;
             transition: 0.3s;
         }
-        .btn-blue:hover {
-            background-color: #1a6ac6;
-            box-shadow: 0 0 25px rgba(45, 137, 239, 0.8);
+        .btn-orange:hover {
+            background-color: #cc4b00; /* Darker Orange */
+            box-shadow: 0 0 25px rgba(255, 94, 0, 0.7);
             color: white;
+            border-color: #cc4b00;
         }
 
-        /* 3. Section Animations (Fade In Up) */
+        /* 3. Section Animations */
         .reveal {
             opacity: 0;
             transform: translateY(50px);
@@ -107,6 +116,8 @@
             padding: 8rem 5%;
             background: #0a0a0a;
         }
+        .page-header h1 span { color: #ff5e00; }
+        
         .z-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -115,14 +126,18 @@
         }
         .z-card {
             background: #111;
-            border: 1px solid #222;
+            border: 1px solid #333;
             padding: 2rem;
             border-radius: 12px;
             transition: 0.3s;
+            position: relative;
+            overflow: hidden;
         }
+        /* Orange Hover Effect */
         .z-card:hover {
             border-color: #ff5e00;
             transform: translateY(-10px);
+            box-shadow: 0 5px 20px rgba(255, 94, 0, 0.1);
         }
         .z-card h3 { font-size: 1.5rem; color: #ff5e00; margin-bottom: 0.5rem; }
         .z-card p { color: #aaa; font-size: 0.95rem; }
@@ -130,16 +145,16 @@
         /* 5. Reviews Section */
         .reviews-section {
             padding: 8rem 5%;
-            background: #050505; 
+            background: #000; 
         }
         .review-card {
             background: #111;
             padding: 2.5rem;
             border-radius: 5px;
             position: relative;
-            border-left: 4px solid #ff5e00;
+            border-left: 4px solid #ff5e00; /* Orange Border */
         }
-        .stars { color: #ffd700; margin-bottom: 1rem; }
+        .stars { color: #ff5e00; margin-bottom: 1rem; } /* Orange Stars */
         .author { margin-top: 1.5rem; font-weight: bold; color: white; }
         .clinic { color: #666; font-size: 0.9rem; }
 
@@ -148,7 +163,7 @@
             position: fixed;
             bottom: 30px;
             right: 30px;
-            background-color: #25d366;
+            background-color: #ff5e00; /* Orange background */
             color: white;
             width: 60px;
             height: 60px;
@@ -157,11 +172,12 @@
             align-items: center;
             justify-content: center;
             font-size: 30px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            box-shadow: 0 4px 10px rgba(255, 94, 0, 0.3);
             z-index: 1000;
             transition: 0.3s;
+            text-decoration: none;
         }
-        .whatsapp-float:hover { transform: scale(1.1); }
+        .whatsapp-float:hover { transform: scale(1.1); background-color: #cc4b00; }
 
         /* Mobile adjustments */
         @media (max-width: 768px) {
@@ -173,9 +189,9 @@
 <body>
 
     <nav class="navbar">
-        <a href="index.html" class="logo">Zirex <span>Labs</span></a>
+        <a href="index.html" class="zirex.jpg">Zirex <span>Labs</span></a>
         <div class="nav-menu">
-            <a href="index.html" class="nav-link active">Home</a>
+            <a href="index.html" class="nav-link active" style="color:#ff5e00;">Home</a>
             <a href="products.html" class="nav-link">Products</a>
             <a href="gallery.html" class="nav-link">Gallery</a>
             <a href="about.html" class="nav-link">About</a>
@@ -188,27 +204,27 @@
         <div class="slide active">
             <img src="SLIDER.jpeg" alt="Transform Your Smile">
             <div class="slide-content reveal">
-                <h1>TRANSFORM<br>YOUR SMILE.</h1>
+                <h1>TRANSFORM<br>YOUR <span style="color:#ff5e00;">SMILE.</span></h1>
                 <p>Experience the confidence of natural-looking, precision-crafted dental crowns.</p>
-                <a href="products.html" class="btn-blue">[ DISCOVER MORE ]</a>
+                <a href="products.html" class="btn-orange">[ DISCOVER MORE ]</a>
             </div>
         </div>
 
         <div class="slide">
             <img src="https://placehold.co/1920x1080/111/333?text=German+CAD+CAM" alt="Technology">
             <div class="slide-content reveal">
-                <h1>GERMAN<br>PRECISION.</h1>
+                <h1>GERMAN<br><span style="color:#ff5e00;">PRECISION.</span></h1>
                 <p>5-Axis milling technology ensures 100% accurate marginal fit.</p>
-                <a href="about.html" class="btn-blue">OUR LAB</a>
+                <a href="about.html" class="btn-orange">OUR LAB</a>
             </div>
         </div>
 
         <div class="slide">
             <img src="https://placehold.co/1920x1080/111/333?text=Aesthetic+Results" alt="Aesthetics">
             <div class="slide-content reveal">
-                <h1>NATURAL<br>AESTHETICS.</h1>
+                <h1>NATURAL<br><span style="color:#ff5e00;">AESTHETICS.</span></h1>
                 <p>Hand-layered porcelain work by master ceramists.</p>
-                <a href="gallery.html" class="btn-blue">VIEW GALLERY</a>
+                <a href="gallery.html" class="btn-orange">VIEW GALLERY</a>
             </div>
         </div>
 
