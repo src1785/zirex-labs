@@ -3,219 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zirex | Precision Zirconia Dental Laboratory</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    <style>
-        /* --- 1. CSS VARIABLES --- */
-        :root {
-            --primary-orange: #ff5e00; 
-            --bg-dark: #121212;
-            --bg-card: #1e1e1e;
-            --text-main: #f4f4f4;
-            --text-muted: #a0a0a0;
-            --gradient-start: #ff5e00;
-            --gradient-end: #ffa800;
-        }
-
-        /* --- 2. GLOBAL STYLES --- */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body {
-            font-family: 'Roboto', sans-serif;
-            color: var(--text-main);
-            line-height: 1.6;
-            background-color: var(--bg-dark);
-            /* Dark Gradient Background */
-            background-image: linear-gradient(180deg, #121212 0%, #000000 100%);
-            background-attachment: fixed; 
-            min-height: 100vh;
-        }
-        
-        a { text-decoration: none; color: inherit; transition: 0.3s; }
-        ul { list-style: none; }
-        img { max-width: 100%; display: block; }
-
-        /* --- 3. NAVIGATION --- */
-        .navbar {
-            display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 5%; 
-            background-color: rgba(18, 18, 18, 0.95);
-            position: sticky; top: 0; z-index: 1000; 
-            border-bottom: 1px solid var(--primary-orange); 
-            backdrop-filter: blur(5px);
-        }
-        
-        .logo h2 { font-size: 1.8rem; margin: 0; color: white; } 
-        .logo span { color: var(--primary-orange); }
-
-        .nav-links { display: flex; gap: 2rem; }
-        .nav-links a { font-weight: 500; color: #fff; }
-        .nav-links a:hover { color: var(--primary-orange); }
-
-        /* --- 4. HERO SECTION WITH IMAGE --- */
-        .new-hero-slider {
-            max-width: 1200px; margin: auto; padding: 5rem 5%; 
-            display: flex; align-items: center; justify-content: space-between; gap: 2rem;
-            min-height: 80vh; 
-        }
-
-        .hero-content { flex: 1; }
-        .hero-content h1 { font-size: 3.5rem; margin-bottom: 1rem; color: white; font-weight: 900; line-height: 1.1; }
-        .hero-content p { font-size: 1.2rem; color: var(--text-muted); margin-bottom: 2rem; }
-        
-        .hero-image-container { flex: 1; border-radius: 10px; overflow: hidden; border: 1px solid #333; }
-        .hero-image-container img { width: 100%; height: auto; object-fit: cover; }
-
-        .cta-button {
-            display: inline-block; padding: 1rem 2.5rem; background-color: var(--primary-orange); 
-            color: white; font-weight: bold; border-radius: 4px;
-        }
-        .cta-button:hover { background-color: #e04e00; }
-
-        /* --- 5. TYPES OF CROWNS (GRID) --- */
-        .products-section { max-width: 1200px; margin: auto; padding: 5rem 5%; }
-        .section-title { text-align: center; margin-bottom: 3rem; font-size: 2.5rem; color: white; }
-        .section-title span { color: var(--primary-orange); }
-
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .product-card {
-            background-color: var(--bg-card);
-            border-radius: 8px; overflow: hidden;
-            border: 1px solid #333; position: relative;
-            transition: transform 0.3s;
-        }
-
-        .product-card:hover { transform: translateY(-5px); border-color: var(--primary-orange); }
-
-        .card-image { height: 200px; background-color: #333; overflow: hidden; }
-        .card-image img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
-        .product-card:hover .card-image img { transform: scale(1.1); }
-
-        .card-content { padding: 1.5rem; }
-        .card-content h3 { color: var(--primary-orange); margin-bottom: 0.5rem; font-size: 1.5rem; }
-        .card-content p { color: var(--text-muted); font-size: 0.95rem; }
-
-        /* --- 6. FOOTER --- */
-        footer {
-            background-color: #080808; border-top: 1px solid #333;
-            padding: 4rem 5%; margin-top: 5rem;
-        }
-        .footer-content {
-            max-width: 1200px; margin: auto;
-            display: flex; justify-content: space-between; flex-wrap: wrap; gap: 2rem;
-        }
-        .footer-col h4 { color: white; margin-bottom: 1.5rem; font-size: 1.2rem; }
-        .footer-col ul li { margin-bottom: 0.8rem; color: var(--text-muted); }
-        .footer-col ul li i { color: var(--primary-orange); margin-right: 10px; }
-        
-        .copyright {
-            text-align: center; margin-top: 3rem; padding-top: 2rem;
-            border-top: 1px solid #1a1a1a; color: #555; font-size: 0.9rem;
-        }
-
-        /* Mobile Responsiveness */
-        @media (max-width: 768px) {
-            .new-hero-slider { flex-direction: column; text-align: center; padding-top: 2rem; }
-            .hero-content h1 { font-size: 2.5rem; }
-            .nav-links { display: none; } /* Simple hide for mobile for now */
-        }
-    </style>
+    <title>Home | Zirex Labs</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <nav class="navbar">
-        <div class="logo">
-            <h2>Zirex <span>Lab</span></h2>
-        </div>
-        <div class="nav-links">
-            <a href="#">Home</a>
-            <a href="#products">Crowns</a>
-            <a href="#contact">Contact</a>
+        <a href="index.html" class="zirex.jpg">Zirex <span>Labs</span></a>
+        <div class="nav-menu">
+            <a href="index.html" class="nav-link active">Home</a>
+            <a href="products.html" class="nav-link">Products</a>
+            <a href="gallery.html" class="nav-link">Gallery</a>
+            <a href="about.html" class="nav-link">About</a>
+            <a href="contact.html" class="nav-link">Contact</a>
         </div>
     </nav>
 
-    <section class="new-hero-slider">
-        <div class="hero-content">
-            <h1>Precision Zirconia Solutions</h1>
-            <p>India's exclusive laboratory dedicated to aesthetic layered Zirconia crowns and custom implant solutions.</p>
-            <a href="#products" class="cta-button">View Our Crowns</a>
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Precision Meets <br>Aesthetics.</h1>
+            <p style="color:#aaa; margin-bottom: 2rem;">India's leading Zirconia laboratory using German precision technology.</p>
+            <a href="products.html" class="btn">Explore Crowns</a>
+            <a href="contact.html" class="btn btn-outline">Send a Case</a>
         </div>
-        <div class="hero-image-container">
-            <img src="https://placehold.co/600x400/1e1e1e/ff5e00?text=Zirex+Crown+Image" alt="Dental Crown Hero Image">
-        </div>
-    </section>
-
-    <section id="products" class="products-section">
-        <h2 class="section-title">Our <span>Crown Types</span></h2>
-        
-        <div class="grid-container">
-            <div class="product-card">
-                <div class="card-image">
-                    <img src="https://placehold.co/400x300/111/orange?text=Monolithic" alt="Monolithic Zirconia">
-                </div>
-                <div class="card-content">
-                    <h3>Monolithic Zirconia</h3>
-                    <p>High strength solid zirconia crowns perfect for posterior teeth. Virtually unbreakable with natural aesthetics.</p>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="card-image">
-                    <img src="https://placehold.co/400x300/111/orange?text=Layered+Zirconia" alt="Layered Zirconia">
-                </div>
-                <div class="card-content">
-                    <h3>Layered Zirconia</h3>
-                    <p>The perfect balance of strength and beauty. A zirconia core with hand-layered porcelain for anterior aesthetics.</p>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="card-image">
-                    <img src="https://placehold.co/400x300/111/orange?text=Implant+Solutions" alt="Implant Solutions">
-                </div>
-                <div class="card-content">
-                    <h3>Implant Solutions</h3>
-                    <p>Custom abutments and screw-retained crowns designed for perfect soft tissue management and fit.</p>
-                </div>
-            </div>
+        <div class="hero-img">
+            <img src="https://placehold.co/600x400/1e1e1e/ff5e00?text=Zirex+Hero" alt="Hero">
         </div>
     </section>
 
-    <footer id="contact">
-        <div class="footer-content">
-            <div class="footer-col">
-                <h4>Zirex Dental Lab</h4>
-                <p style="color: #a0a0a0; max-width: 300px;">
-                     delivering precision and aesthetics in every case. We use only the highest quality materials.
-                </p>
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <h3>Zirex<span>Labs</span></h3>
+                <p style="color:#666">Precision dental aesthetics.</p>
             </div>
-            <div class="footer-col">
+            <div>
                 <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#products">Products</a></li>
-                    <li><a href="#">Send a Case</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Contact Us</h4>
-                <ul>
-                    <li><i class="fas fa-map-marker-alt"></i> Tamil Nadu, India</li>
-                    <li><i class="fas fa-phone"></i> +91 98765 43210</li>
-                    <li><i class="fas fa-envelope"></i> lab@zirex.com</li>
+                <ul style="list-style:none; margin-top:10px;">
+                    <li><a href="products.html" style="color:#888">Products</a></li>
+                    <li><a href="gallery.html" style="color:#888">Gallery</a></li>
                 </ul>
             </div>
         </div>
-        <div class="copyright">
-            <p>&copy; 2025 Zirex Dental Laboratory. All Rights Reserved.</p>
-        </div>
+        <div class="copyright">&copy; 2026 Zirex Labs.</div>
     </footer>
 
 </body>
